@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="26.45833mm"
+   height="17.19791mm"
+   viewBox="0 0 26.45833 17.197911"
+   version="1.1"
+   id="svg67884"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="linkblock.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview67886"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.0444209"
+     inkscape:cx="-326.49672"
+     inkscape:cy="-135.00304"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs67881" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-296.15855,-295.65543)">
+    <path
+       id="path68645"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:1.1094;stroke-linecap:round;stroke-linejoin:round"
+       d="m 296.97665,295.65543 c -0.45302,0 -0.8181,0.3552 -0.8181,0.796 v 15.60641 c 0,0.44081 0.36508,0.7955 0.8181,0.7955 h 24.82215 c 0.45303,0 0.81808,-0.35469 0.81808,-0.7955 v -15.60641 c 0,-0.4408 -0.36505,-0.796 -0.81808,-0.796 z"
+       sodipodi:nodetypes="sssssssss" />
+    <rect
+       style="fill:#577bf9;fill-opacity:1;stroke:none;stroke-width:0.385645;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;paint-order:stroke fill markers"
+       id="rect68647"
+       width="18.897787"
+       height="5.4466848"
+       x="300.03336"
+       y="301.71136"
+       ry="0.78571916" />
+    <g
+       aria-label="Link"
+       id="g68657"
+       style="font-size:10.2596px;letter-spacing:0px;word-spacing:0px;fill:#ffffff;stroke-width:0.63136px"
+       transform="matrix(0.28222223,0,0,0.28222223,1288.7897,-181.76832)">
+      <path
+         d="m -3493.6238,1725.3759 h 4.4937 v -0.8106 h -3.6011 v -6.4738 h -0.8926 z"
+         style="-inkscape-font-specification:'FONTSPRING DEMO - Averta CY'"
+         id="path68649" />
+      <path
+         d="m -3487.5501,1719.4663 c 0.3386,0 0.6053,-0.2667 0.6053,-0.595 0,-0.3283 -0.2667,-0.5951 -0.6053,-0.5951 -0.3386,0 -0.6053,0.2668 -0.6053,0.5951 0,0.3283 0.2667,0.595 0.6053,0.595 z m -0.4206,5.9096 h 0.831 v -4.9965 h -0.831 z"
+         style="-inkscape-font-specification:'FONTSPRING DEMO - Averta CY'"
+         id="path68651" />
+      <path
+         d="m -3485.5187,1725.3759 h 0.831 v -2.4931 c 0,-1.1286 0.6156,-1.8057 1.5595,-1.8057 0.7284,0 1.2312,0.4001 1.2312,1.5697 v 2.7291 h 0.831 v -2.9651 c 0,-1.4261 -0.7182,-2.0929 -1.7954,-2.0929 -0.7695,0 -1.4261,0.3591 -1.816,0.9644 h -0.01 v -0.9029 h -0.831 z"
+         style="-inkscape-font-specification:'FONTSPRING DEMO - Averta CY'"
+         id="path68653" />
+      <path
+         d="m -3479.6092,1725.3759 h 0.8311 v -1.2415 l 1.0259,-1.108 1.5082,2.3495 h 0.9541 l -1.8877,-2.9343 1.8672,-2.0622 h -1.0054 l -2.4521,2.7393 -0.01,-0.01 v -5.2837 h -0.8311 z"
+         style="-inkscape-font-specification:'FONTSPRING DEMO - Averta CY'"
+         id="path68655" />
+    </g>
+    <path
+       style="fill:#577bf9;fill-opacity:1;stroke:#ffffff;stroke-width:0.227066;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 302.79269,305.80561 h 5.21174"
+       id="path68659" />
+  </g>
+</svg>

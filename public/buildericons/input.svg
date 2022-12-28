@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="26.45833mm"
+   height="17.19791mm"
+   viewBox="0 0 26.45833 17.197911"
+   version="1.1"
+   id="svg67884"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="input.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview67886"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.0444209"
+     inkscape:cx="-357.1357"
+     inkscape:cy="-117.76861"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs67881" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-304.04118,-291.15257)">
+    <path
+       id="path68960"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:1.1094;stroke-linecap:round;stroke-linejoin:round"
+       d="m 304.85926,291.15257 c -0.45303,0 -0.81808,0.3552 -0.81808,0.796 v 15.60641 c 0,0.44081 0.36505,0.7955 0.81808,0.7955 h 24.82215 c 0.45302,0 0.8181,-0.35469 0.8181,-0.7955 v -15.60641 c 0,-0.4408 -0.36508,-0.796 -0.8181,-0.796 z"
+       sodipodi:nodetypes="sssssssss" />
+    <rect
+       style="fill:#eaedf8;fill-opacity:1;stroke:none;stroke-width:0.238895;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;paint-order:stroke fill markers"
+       id="rect68962"
+       width="15.560411"
+       height="2.5383914"
+       x="309.8757"
+       y="300.56326"
+       ry="0.3661792" />
+    <g
+       aria-label="input"
+       id="g68974"
+       style="font-weight:bold;font-size:12.1707px;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#577bf9;stroke-width:0.702157;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       transform="matrix(0.28222223,0,0,0.28222223,1428.022,-10.479385)">
+      <path
+         d="m -3959.4129,1086.6816 c 0.4016,0 0.7059,-0.3043 0.7059,-0.7059 0,-0.3895 -0.2921,-0.6816 -0.6816,-0.6816 -0.4016,0 -0.7059,0.3043 -0.7059,0.7059 0,0.3895 0.2921,0.6816 0.6816,0.6816 z m -1.4605,7.0225 h 0.9737 l 0.7302,-5.9271 h -0.9737 z"
+         style="-inkscape-font-specification:'FONTSPRING DEMO - Averta CY Italic'"
+         id="path68964" />
+      <path
+         d="m -3957.9889,1093.7041 h 0.9614 l 0.2921,-2.3368 c 0.1948,-1.5822 1.424,-2.7749 2.3368,-2.7749 0.6694,0 0.9493,0.4625 0.7911,1.6187 l -0.4625,3.493 h 0.9615 l 0.4747,-3.566 c 0.219,-1.6552 -0.2556,-2.4342 -1.4605,-2.4342 -0.8763,0 -1.7283,0.5234 -2.3368,1.424 l -0.024,-0.012 0.1582,-1.3387 h -0.9615 z"
+         style="-inkscape-font-specification:'FONTSPRING DEMO - Averta CY Italic'"
+         id="path68966" />
+      <path
+         d="m -3951.6115,1096.1139 h 0.9615 l 0.3651,-2.921 0.024,-0.012 c 0.4016,0.4138 1.0466,0.5963 1.6917,0.5963 1.8378,0 3.0061,-1.7769 3.0061,-3.6755 0,-1.3023 -0.6693,-2.3977 -1.9716,-2.3977 -0.9737,0 -1.7039,0.5721 -2.2394,1.4605 l -0.024,-0.012 0.1704,-1.3753 h -0.9615 z m 2.8236,-3.2131 c -0.4625,0 -1.0832,-0.1704 -1.3875,-0.6815 l 0.085,-0.6451 c 0.2191,-1.6795 1.2415,-2.994 2.349,-2.994 0.8033,0 1.2049,0.7181 1.2049,1.5822 0,1.424 -0.852,2.7384 -2.2516,2.7384 z"
+         style="-inkscape-font-specification:'FONTSPRING DEMO - Averta CY Italic'"
+         id="path68968" />
+      <path
+         d="m -3942.7877,1093.7771 c 0.9006,0 1.6673,-0.572 2.142,-1.4118 h 0.024 l -0.1582,1.3388 h 0.9615 l 0.7303,-5.9271 h -0.9737 l -0.3164,2.5923 c -0.1826,1.4362 -1.3145,2.5194 -2.1299,2.5194 -0.6572,0 -1.0223,-0.353 -0.8641,-1.5822 l 0.4746,-3.5295 h -0.9615 l -0.499,3.6147 c -0.2312,1.7039 0.3652,2.3854 1.5701,2.3854 z"
+         style="-inkscape-font-specification:'FONTSPRING DEMO - Averta CY Italic'"
+         id="path68970" />
+      <path
+         d="m -3936.605,1093.7771 c 0.4746,0 1.0102,-0.146 1.424,-0.4138 l -0.1339,-0.8641 c -0.3408,0.2312 -0.6816,0.353 -0.9737,0.353 -0.4381,0 -0.572,-0.3287 -0.499,-0.925 l 0.4138,-3.3105 h 1.6796 l 0.085,-0.8397 h -1.6674 l 0.2556,-2.1299 -0.9737,0.1826 -0.2556,1.9473 h -0.6694 l -0.085,0.8397 h 0.6572 l -0.426,3.4687 c -0.1217,1.0102 0.2069,1.6917 1.1684,1.6917 z"
+         style="-inkscape-font-specification:'FONTSPRING DEMO - Averta CY Italic'"
+         id="path68972" />
+    </g>
+  </g>
+</svg>
