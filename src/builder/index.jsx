@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 
 import { Button, Icon } from 'semantic-ui-react';
 
@@ -24,15 +24,12 @@ panelList[0] = [];
 panelList[2] = ['ti ti-marquee-2', '', 'ti ti-arrows-maximize', 'ti ti-code', '', '', 'ti ti-file-import', 'ti ti-eraser'];
 panelList[3] = ['ti ti-pencil', 'ti ti-settings', 'ti ti-layers-subtract', 'ti ti-layout-grid'];
 
-class Builder extends Component {
-    state = {
-        editor: '',
-        preview: true,
-        zIndex: 4,
-        show: false,
-    };
+export default function Buidler(props) {
+    const [editor, setEditor] = React.useState(null);
+    const [zIndex, setIndex] = React.useState(4);
+    const [show, setShow] = React.useState(false);
 
-    componentDidMount() {
+    useEffect(() => {
         let editor = grapesjs.init({
             fromElement: true,
             container: '#gjs',
@@ -124,29 +121,21 @@ class Builder extends Component {
         });
 
         editor.load();
+        setEditor(editor);
+      }, []);
 
-        this.setState({
-            ...this.state,
-            editor: editor
-        });
-    }
-
-    componentDidUpdate() {
-    }
-
-    preview = (run) => {
-        const { editor } = this.state;
+    const setPreview = (run) => {
         const commandManager = editor.Commands
         if (run == true) {
             commandManager.get('preview').run(editor)
-            this.setState({ ...this.state, zIndex: 1 });
+            setIndex(1);
         } else {
             commandManager.get('preview').stop(editor)
-            this.setState({ ...this.state, zIndex: 4 });
+            setIndex(4);
         }
     }
 
-    undo = () => {
+    const undo = () => {
         const { editor } = this.state;
         const undoManager = editor.UndoManager
         if (undoManager.hasUndo()) {
@@ -154,7 +143,7 @@ class Builder extends Component {
         }
     }
 
-    redo = () => {
+    const redo = () => {
         const { editor } = this.state;
         const undoManager = editor.UndoManager
         if (undoManager.hasRedo()) {
@@ -162,37 +151,23 @@ class Builder extends Component {
         }
     }
 
-    export = () => {
-        const { editor } = this.state;
-        editor.runCommand('gjs-export-zip');
-    }
+    // const export = () => {
+    //     editor.runCommand('gjs-export-zip');
+    // }
 
-    stateChange = (states) => {
-        this.setState({
-            ...this.state,
-            ...states
-        })
-    }
-
-    render() {
-        const { zIndex } = this.state;
-
-        return (
-            <>
-                <Button.Group className='control demo' style={{ zIndex: zIndex }}>
-                    <Button onClick={() => this.preview(true)} className="page_preview">Preview</Button>
-                    <Button  color="blue" className="page_save">Save</Button>
-                </Button.Group>
-                <Icon onClick={() => this.preview(false)} style={{ zIndex: 5 - zIndex }} name="eye slash" size='big' className="page_preview"></Icon>
-                <Button.Group className='control history' style={{ zIndex: zIndex }}>
-                    <Button onClick={() => this.undo()} icon="undo" className="page_undo"></Button>
-                    <Button onClick={() => this.redo()} icon="redo" className="page_redo"></Button>
-                </Button.Group>
-                <div id="gjs">
-                </div>
-            </>
-        );
-    }
+    return (
+        <>
+            <Button.Group className='control demo' style={{ zIndex: zIndex }}>
+                <Button onClick={() => setPreview(true)} className="page_preview">Preview</Button>
+                <Button  color="blue" className="page_save">Save</Button>
+            </Button.Group>
+            <Icon onClick={() => setPreview(false)} style={{ zIndex: 5 - zIndex }} name="eye slash" size='big' className="page_preview"></Icon>
+            <Button.Group className='control history' style={{ zIndex: zIndex }}>
+                <Button onClick={() => undo()} icon="undo" className="page_undo"></Button>
+                <Button onClick={() => redo()} icon="redo" className="page_redo"></Button>
+            </Button.Group>
+            <div id="gjs">
+            </div>
+        </>
+    );
 }
-
-export default Builder;
