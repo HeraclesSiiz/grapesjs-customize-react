@@ -27,7 +27,6 @@ panelList[3] = ['ti ti-pencil', 'ti ti-settings', 'ti ti-layers-subtract', 'ti t
 export default function Buidler(props) {
     const [editor, setEditor] = React.useState(null);
     const [zIndex, setIndex] = React.useState(4);
-    const [show, setShow] = React.useState(false);
 
     useEffect(() => {
         let editor = grapesjs.init({
@@ -108,16 +107,10 @@ export default function Buidler(props) {
         undoManager.start();
 
         editor.on('run:preview', () => {
-            this.setState({
-                ...this.state,
-                zIndex: 1
-            })
+            setIndex(1);
         });
         editor.on('stop:preview', () => {
-            this.setState({
-                ...this.state,
-                zIndex: 4
-            })
+            setIndex(4);
         });
 
         editor.load();
@@ -136,7 +129,6 @@ export default function Buidler(props) {
     }
 
     const undo = () => {
-        const { editor } = this.state;
         const undoManager = editor.UndoManager
         if (undoManager.hasUndo()) {
             undoManager.undo();
@@ -144,7 +136,6 @@ export default function Buidler(props) {
     }
 
     const redo = () => {
-        const { editor } = this.state;
         const undoManager = editor.UndoManager
         if (undoManager.hasRedo()) {
             undoManager.redo();
