@@ -66,7 +66,8 @@ export default function Buidler(props) {
         });
 
         const styleManager = editor.StyleManager;
-        const fontManager = editor.StyleManager.getProperty('typography', 'font-family');
+
+        const fontManager = styleManager.getProperty('typography', 'font-family');
         let fontOptions = fontManager.attributes.options;
         //add typography fonts
         fontOptions.push({ value: 'Roboto, Arial', name: 'Roboto' });
@@ -81,6 +82,55 @@ export default function Buidler(props) {
         fontOptions.push({ value: 'Josefin Sans', name: 'Josefin Sans' });
         fontOptions.push({ value: 'Nunito', name: 'Nunito' });
         fontManager.set('list',fontOptions);
+
+        styleManager.removeProperty('dimension', 'width');
+        styleManager.removeProperty('dimension', 'height');
+
+        styleManager.addProperty('dimension', {
+            label: 'Width',
+            property: 'width',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 2000,
+          }, { at: 0 });
+
+        styleManager.addProperty('dimension', {
+            label: 'Height',
+            property: 'height',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 2000,
+        }, { at: 1 });
+
+        // styleManager.addProperty('dimension', {
+        //     label: 'Margin',
+        //     property: 'margin',
+        //     type: 'slider',
+        //     units:['px','%','em','rem','vh','vw'],
+        //     min: 0,
+        //     max: 100,
+        //   }, { at: 4 });
+          
+        // styleManager.addProperty('dimension', {
+        //     label: 'Margin-x',
+        //     property: 'margin-x',
+        //     type: 'slider',
+        //     units:['px','%','em','rem','vh','vw'],
+        //     min: 0,
+        //     max: 100,
+        //   }, { at: 5 });
+          
+        // styleManager.addProperty('dimension', {
+        //     label: 'Margin-y',
+        //     property: 'margin-y',
+        //     type: 'slider',
+        //     units:['px','%','em','rem','vh','vw'],
+        //     min: 0,
+        //     max: 100,
+        //   }, { at: 6 });
+          
         styleManager.render();
 
         const panelManager = editor.Panels;
