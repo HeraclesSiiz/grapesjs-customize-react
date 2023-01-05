@@ -85,6 +85,8 @@ export default function Buidler(props) {
 
         styleManager.removeProperty('dimension', 'width');
         styleManager.removeProperty('dimension', 'height');
+        styleManager.removeProperty('dimension', 'margin');
+        styleManager.removeProperty('dimension', 'padding');
 
         styleManager.addProperty('dimension', {
             label: 'Width',
@@ -104,32 +106,77 @@ export default function Buidler(props) {
             max: 2000,
         }, { at: 1 });
 
-        // styleManager.addProperty('dimension', {
-        //     label: 'Margin',
-        //     property: 'margin',
-        //     type: 'slider',
-        //     units:['px','%','em','rem','vh','vw'],
-        //     min: 0,
-        //     max: 100,
-        //   }, { at: 4 });
-          
-        // styleManager.addProperty('dimension', {
-        //     label: 'Margin-x',
-        //     property: 'margin-x',
-        //     type: 'slider',
-        //     units:['px','%','em','rem','vh','vw'],
-        //     min: 0,
-        //     max: 100,
-        //   }, { at: 5 });
-          
-        // styleManager.addProperty('dimension', {
-        //     label: 'Margin-y',
-        //     property: 'margin-y',
-        //     type: 'slider',
-        //     units:['px','%','em','rem','vh','vw'],
-        //     min: 0,
-        //     max: 100,
-        //   }, { at: 6 });
+        styleManager.addProperty('dimension', {
+            label: 'margin top',
+            property: 'margin-top',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 100,
+          }, { at: 4 });
+
+        styleManager.addProperty('dimension', {
+            label: 'margin right',
+            property: 'margin-right',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 100,
+        }, { at: 5 });
+        
+        styleManager.addProperty('dimension', {
+            label: 'margin bottom',
+            property: 'margin-bottom',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 100,
+        }, { at: 6 });
+        
+        styleManager.addProperty('dimension', {
+            label: 'margin left',
+            property: 'margin-left',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 100,
+        }, { at: 7 });
+
+        styleManager.addProperty('dimension', {
+            label: 'padding top',
+            property: 'padding-top',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 100,
+          }, { at: 8 });
+
+        styleManager.addProperty('dimension', {
+            label: 'padding right',
+            property: 'padding-right',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 100,
+        }, { at: 9 });
+        
+        styleManager.addProperty('dimension', {
+            label: 'padding bottom',
+            property: 'padding-bottom',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 100,
+        }, { at: 10 });
+        
+        styleManager.addProperty('dimension', {
+            label: 'padding left',
+            property: 'padding-left',
+            type: 'slider',
+            units:['px','%','em','rem','vh','vw'],
+            min: 0,
+            max: 100,
+        }, { at: 11 });
           
         styleManager.render();
 
