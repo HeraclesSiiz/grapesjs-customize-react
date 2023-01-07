@@ -22,7 +22,7 @@ const panelList = [];
 panelList[1] = ['ti ti-device-desktop', 'ti ti-device-tablet', 'ti ti-device-mobile'];
 panelList[0] = [];
 panelList[2] = ['ti ti-marquee-2', '', 'ti ti-arrows-maximize', 'ti ti-code', '', '', 'ti ti-file-import', 'ti ti-eraser'];
-panelList[3] = ['ti ti-pencil', 'ti ti-settings', 'ti ti-layers-subtract', 'ti ti-layout-grid'];
+panelList[3] = ['ti ti-pencil', 'ti ti-settings', 'ti ti-layers-subtract', 'ti ti-layout-grid','ti ti-puzzle'];
 
 export default function Buidler(props) {
     const [editor, setEditor] = React.useState(null);
@@ -184,7 +184,218 @@ export default function Buidler(props) {
         styleManager.render();
 
         const panelManager = editor.Panels;
+        const blockManager = editor.Blocks;
+
         let panels = panelManager.getPanels();
+
+        panelManager.addButton('views', {
+            id: 'open-html-blocks',
+            attributes: {title: "html blocks"},
+            active: false,
+            command: {
+                run: function (editor) {
+                    blockManager.add('header', {
+                        label: 'header',
+                        content: 
+                        `<html lang="en">
+                        <head>
+                        <title>Page Title</title>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <style>
+                        /* Style the body */
+                        body {
+                          font-family: Arial;
+                          margin: 0;
+                        }
+                        
+                        /* Header/Logo Title */
+                        .header {
+                          padding: 60px;
+                          text-align: center;
+                          background: #1abc9c;
+                          color: white;
+                          font-size: 30px;
+                        }
+                        
+                        /* Page Content */
+                        .content {padding:20px;}
+                        </style>
+                        </head>
+                        <body>
+                        
+                        <div class="header">
+                          <h1>Header</h1>
+                          <p>My supercool header</p>
+                        </div>
+                        
+                        <div class="content">
+                          <h1>Content</h1>
+                          <p>Some content blablabla, some content blablabla.</p>
+                          <p>Some content blablabla, some content blablabla.</p>
+                          <p>Some content blablabla, some content blablabla.</p>
+                        </div>
+                        
+                        </body>
+                        </html>`,
+                        category: 'html',
+                        media:'<img src = "header.png">',
+                        attributes: {
+                        title: 'Insert h1 block'
+                        }
+                    });
+                    
+                    blockManager.add('blog', {
+                        label: 'blog',
+                        content: 
+                        `<html>
+                        <head>
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <style>
+                        * {
+                          box-sizing: border-box;
+                        }
+                        
+                        /* Add a gray background color with some padding */
+                        body {
+                          font-family: Arial;
+                          padding: 20px;
+                          background: #f1f1f1;
+                        }
+                        
+                        /* Header/Blog Title */
+                        .header {
+                          padding: 30px;
+                          font-size: 40px;
+                          text-align: center;
+                          background: white;
+                        }
+                        
+                        /* Create two unequal columns that floats next to each other */
+                        /* Left column */
+                        .leftcolumn {   
+                          float: left;
+                          width: 75%;
+                        }
+                        
+                        /* Right column */
+                        .rightcolumn {
+                          float: left;
+                          width: 25%;
+                          padding-left: 20px;
+                        }
+                        
+                        /* Fake image */
+                        .fakeimg {
+                          background-color: #aaa;
+                          width: 100%;
+                          padding: 20px;
+                        }
+                        
+                        /* Add a card effect for articles */
+                        .card {
+                           background-color: white;
+                           padding: 20px;
+                           margin-top: 20px;
+                        }
+                        
+                        /* Clear floats after the columns */
+                        .row:after {
+                          content: "";
+                          display: table;
+                          clear: both;
+                        }
+                        
+                        /* Footer */
+                        .footer {
+                          padding: 20px;
+                          text-align: center;
+                          background: #ddd;
+                          margin-top: 20px;
+                        }
+                        
+                        /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+                        @media screen and (max-width: 800px) {
+                          .leftcolumn, .rightcolumn {   
+                            width: 100%;
+                            padding: 0;
+                          }
+                        }
+                        </style>
+                        </head>
+                        <body>
+                        
+                        <div class="header">
+                          <h2>Blog Name</h2>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="leftcolumn">
+                            <div class="card">
+                              <h2>TITLE HEADING</h2>
+                              <h5>Title description, Dec 7, 2017</h5>
+                              <div class="fakeimg" style="height:200px;">Image</div>
+                              <p>Some text..</p>
+                              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                            </div>
+                            <div class="card">
+                              <h2>TITLE HEADING</h2>
+                              <h5>Title description, Sep 2, 2017</h5>
+                              <div class="fakeimg" style="height:200px;">Image</div>
+                              <p>Some text..</p>
+                              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                            </div>
+                          </div>
+                          <div class="rightcolumn">
+                            <div class="card">
+                              <h2>About Me</h2>
+                              <div class="fakeimg" style="height:100px;">Image</div>
+                              <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                            </div>
+                            <div class="card">
+                              <h3>Popular Post</h3>
+                              <div class="fakeimg">Image</div><br>
+                              <div class="fakeimg">Image</div><br>
+                              <div class="fakeimg">Image</div>
+                            </div>
+                            <div class="card">
+                              <h3>Follow Me</h3>
+                              <p>Some text..</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="footer">
+                          <h2>Footer</h2>
+                        </div>
+                        
+                        </body>
+                        </html>`,
+                        category: 'html',
+                        media:'<img src = "blog.jpg">',
+                        attributes: {
+                            title: 'Insert h3 block',
+                        }
+                    });
+
+                    blockManager.render( blocks.filter((block) => { 
+                        if (block.attributes.category.attributes.label === 'html') {
+                            return true; 
+                        } 
+                    }));
+                    editor.runCommand('open-blocks');
+                },
+                stop: function (editor) {
+                    blockManager.render( blocks.filter((block) => {
+                        if (block.attributes.category.attributes.label !== 'html') {
+                            return true; 
+                        } 
+                    }));
+                    const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
+                    openBlocksBtn.set('active', 0);
+                }
+            }
+        });
 
         panels.map((panel, index) => {
             panel.buttons.models.map((button, pindex) => {
@@ -194,10 +405,9 @@ export default function Buidler(props) {
             panels[index] = panel;
         });
 
-        const blockManager = editor.Blocks;
-        
         blockManager.add('lead_generation', {
             label: 'Lead Generation',
+            category: 'forms',
             content: 
                 `<form method='get' action='/'>
                     <input type='text' placeholder='Name' name='form_name' class='form_name'>
@@ -222,6 +432,7 @@ export default function Buidler(props) {
 
         blockManager.add('contact_form', {
         label: 'Contact Form',
+        category: 'forms',
         content: 
             `<form method='get' action='/'>
                 <input type='text' placeholder='Name' name='form_name' class='form_name'>
@@ -249,10 +460,8 @@ export default function Buidler(props) {
         }, { at: 13 });
 
         let blocks = blockManager.getAll();
-
         blocks.map((block, index) => {
             block.attributes.media = '<img src = "buildericons/' + svgNameList[index] + '.svg">';
-            console.log(block.attributes.content);
             
             switch(block.attributes.label){
                 case '1 Column':                    
@@ -474,11 +683,9 @@ export default function Buidler(props) {
             }
             blocks[index] = block;
         });
-        blockManager.render(blocks);
 
         editor.on('component:selected', () => {
             const selected = editor.getSelected();
-            console.log(selected.attributes,editor.Panels);
             const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
             if (selected.attributes.name == "Row" || selected.attributes.name == "Cell") {
                 if(!openBlocksBtn || !openBlocksBtn.get('active')){
@@ -498,6 +705,8 @@ export default function Buidler(props) {
         });
         
         editor.load();
+        editor.Commands.stop('open-html-blocks');
+
         setEditor(editor);
       }, []);
 
