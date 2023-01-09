@@ -469,21 +469,23 @@ export default function Buidler(props) {
             block.attributes.media = '<img src = "buildericons/' + svgNameList[index] + '.svg">';
             
             switch(block.attributes.label){
-                case '1 Column':                    
+                case '1 Column':
                     block.attributes.content =
-                    `<div class='gjs-row' data-text='&#43;' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
-                        <div  class='gjs-cell' data-text='&#43;' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
+                    `<div class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
+                        <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                     </div>
                     <style>  
                         .gjs-row {
-                            display: table;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: stretch;
+                            flex-wrap: nowrap;
                             padding: 10px;
-                            width: 100%;
                         }
                         .gjs-cell {
-                            width: 8%;
-                            display: table-cell;
-                            height: 75px;
+                            min-height: 75px;
+                            flex-grow: 1;
+                            flex-basis: 100%;
                         }
                         
                         @media (max-width: 768px) {
@@ -511,20 +513,22 @@ export default function Buidler(props) {
                     break;
                 case '2 Columns':
                     block.attributes.content = 
-                        `<div  class='gjs-row' data-text='&#43;' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
-                            <div  class='gjs-cell' data-text='&#43;' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
-                            <div  class='gjs-cell' data-text='&#43;' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
+                        `<div  class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
+                            <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
+                            <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                         </div>
                         <style>
                         .gjs-row {
-                            display: table;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: stretch;
+                            flex-wrap: nowrap;
                             padding: 10px;
-                            width: 100%;
                         }
                         .gjs-cell {
-                            width: 8%;
-                            display: table-cell;
-                            height: 75px;
+                            min-height: 75px;
+                            flex-grow: 1;
+                            flex-basis: 100%;
                         }
                         @media (max-width: 768px) {
                             .gjs-cell, .gjs-cell30, .gjs-cell70 {
@@ -551,21 +555,23 @@ export default function Buidler(props) {
                     break;
                 case '3 Columns':
                     block.attributes.content = 
-                    `<div  class='gjs-row' data-text='&#43;' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
-                        <div  class='gjs-cell' data-text='&#43;' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
-                        <div  class='gjs-cell' data-text='&#43;' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
-                        <div  class='gjs-cell' data-text='&#43;' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
+                    `<div  class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
+                        <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
+                        <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
+                        <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                     </div>
                     <style>
                     .gjs-row {
-                        display: table;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: stretch;
+                        flex-wrap: nowrap;
                         padding: 10px;
-                        width: 100%;
                     }
                     .gjs-cell {
-                        width: 8%;
-                        display: table-cell;
-                        height: 75px;
+                        min-height: 75px;
+                        flex-grow: 1;
+                        flex-basis: 100%;
                     }
                     @media (max-width: 768px) {
                         .gjs-cell, .gjs-cell30, .gjs-cell70 {
@@ -592,27 +598,27 @@ export default function Buidler(props) {
                     break;
                 case '2 Columns 3/7':
                     block.attributes.content = 
-                    `<div  class='gjs-row' data-text='&#43;' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
-                        <div  class='gjs-cell' data-text='&#43;' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell' style='width: 30%;'></div>
-                        <div  class='gjs-cell' data-text='&#43;' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell' style='width: 70%;'></div>
+                    `<div  class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
+                        <div  class='gjs-cell30' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
+                        <div  class='gjs-cell70' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                     </div>
                     <style>
                     .gjs-row {
-                        display: table;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: stretch;
+                        flex-wrap: nowrap;
                         padding: 10px;
-                        width: 100%;
-                    }
-                    .gjs-cell {
-                        width: 8%;
-                        display: table-cell;
-                        height: 75px;
                     }
                     .gjs-cell30 {
-                        width: 30%;
+                        min-height: 75px;
+                        flex-grow: 1;
+                        flex-basis: 30%;
                     }
-                            
                     .gjs-cell70 {
-                        width: 70%;
+                        min-height: 75px;
+                        flex-grow: 1;
+                        flex-basis: 70%;
                     }
                     @media (max-width: 768px) {
                         .gjs-cell, .gjs-cell30, .gjs-cell70 {
@@ -628,7 +634,7 @@ export default function Buidler(props) {
                         background-color:#555;
                         border:1px solid #ddd;
                     }
-                    .gjs-cell:empty:not(:focus)  {
+                    .gjs-cell30:empty:not(:focus),.gjs-cell70:empty:not(:focus)  {
                         background-image: url("plus.png");
                         background-repeat: no-repeat;
                         background-position: center;
