@@ -115,7 +115,7 @@ export default function Buidler(props) {
             type: 'slider',
             units:['px','%','em','rem','vh','vw'],
             min: 0,
-            max: 100,
+            max: 200,
           }, { at: 4 });
 
         styleManager.addProperty('dimension', {
@@ -124,7 +124,7 @@ export default function Buidler(props) {
             type: 'slider',
             units:['px','%','em','rem','vh','vw'],
             min: 0,
-            max: 100,
+            max: 200,
         }, { at: 5 });
         
         styleManager.addProperty('dimension', {
@@ -133,7 +133,7 @@ export default function Buidler(props) {
             type: 'slider',
             units:['px','%','em','rem','vh','vw'],
             min: 0,
-            max: 100,
+            max: 200,
         }, { at: 6 });
         
         styleManager.addProperty('dimension', {
@@ -142,7 +142,7 @@ export default function Buidler(props) {
             type: 'slider',
             units:['px','%','em','rem','vh','vw'],
             min: 0,
-            max: 100,
+            max: 200,
         }, { at: 7 });
 
         styleManager.addProperty('dimension', {
@@ -151,7 +151,7 @@ export default function Buidler(props) {
             type: 'slider',
             units:['px','%','em','rem','vh','vw'],
             min: 0,
-            max: 100,
+            max: 200,
           }, { at: 8 });
 
         styleManager.addProperty('dimension', {
@@ -160,7 +160,7 @@ export default function Buidler(props) {
             type: 'slider',
             units:['px','%','em','rem','vh','vw'],
             min: 0,
-            max: 100,
+            max: 200,
         }, { at: 9 });
         
         styleManager.addProperty('dimension', {
@@ -169,7 +169,7 @@ export default function Buidler(props) {
             type: 'slider',
             units:['px','%','em','rem','vh','vw'],
             min: 0,
-            max: 100,
+            max: 200,
         }, { at: 10 });
         
         styleManager.addProperty('dimension', {
@@ -178,7 +178,7 @@ export default function Buidler(props) {
             type: 'slider',
             units:['px','%','em','rem','vh','vw'],
             min: 0,
-            max: 100,
+            max: 200,
         }, { at: 11 });
           
         styleManager.render();
