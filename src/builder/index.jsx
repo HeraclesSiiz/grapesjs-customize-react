@@ -383,6 +383,11 @@ export default function Buidler(props) {
                             return true; 
                         } 
                     }));
+                    const html_blocks = document.querySelectorAll('.gjs-block');
+                    for(var html_block of html_blocks){
+                        html_block.style.width = "90%";
+                    }
+
                     editor.runCommand('open-blocks');
                 },
                 stop: function (editor) {
@@ -489,30 +494,18 @@ export default function Buidler(props) {
                         }
                                             
                         .gjs-row:empty:not(:focus)  {
+                            background-image: url("plus.png");
+                            background-repeat: no-repeat;
+                            background-position: center;
                             background-color:#555;
                             border:1px solid #ddd;
                         }
                         .gjs-cell:empty:not(:focus)  {
+                            background-image: url("plus.png");
+                            background-repeat: no-repeat;
+                            background-position: center;
                             background-color:#888;
                             border:1px solid #eee;
-                        }
-                        .gjs-cell:empty:not(:focus)::before  {
-                            content: attr(data-text);
-                            position: relative;
-                            background-color: #ccc;
-                            padding: 0.3em 0.5em;
-                            border-radius: 50%;
-                            top: calc(50% - 0.5em);
-                            left: calc(50% - 0.5em);
-                        }
-                        .gjs-row:empty:not(:focus)::before {
-                            content: attr(data-text);
-                            position: relative;
-                            background-color: #ccc;
-                            padding: 0.3em 0.5em;
-                            border-radius: 50%;
-                            top: calc(50% - 0.5em);
-                            left: calc(50% - 0.5em);
                         }
                     </style>`;
                     break;
@@ -541,30 +534,18 @@ export default function Buidler(props) {
                         }
                                             
                         .gjs-row:empty:not(:focus)  {
+                            background-image: url("plus.png");
+                            background-repeat: no-repeat;
+                            background-position: center;
                             background-color:#555;
                             border:1px solid #ddd;
                         }
                         .gjs-cell:empty:not(:focus)  {
+                            background-image: url("plus.png");
+                            background-repeat: no-repeat;
+                            background-position: center;
                             background-color:#888;
                             border:1px solid #eee;
-                        }
-                        .gjs-cell:empty:not(:focus)::before  {
-                            content: attr(data-text);
-                            position: relative;
-                            background-color: #ccc;
-                            padding: 0.3em 0.5em;
-                            border-radius: 50%;
-                            top: calc(50% - 0.5em);
-                            left: calc(50% - 0.5em);
-                        }
-                        .gjs-row:empty:not(:focus)::before {
-                            content: attr(data-text);
-                            position: relative;
-                            background-color: #ccc;
-                            padding: 0.3em 0.5em;
-                            border-radius: 50%;
-                            top: calc(50% - 0.5em);
-                            left: calc(50% - 0.5em);
                         }
                         </style>`;
                     break;
@@ -594,30 +575,18 @@ export default function Buidler(props) {
                     }
                                             
                     .gjs-row:empty:not(:focus)  {
+                        background-image: url("plus.png");
+                        background-repeat: no-repeat;
+                        background-position: center;
                         background-color:#555;
                         border:1px solid #ddd;
                     }
                     .gjs-cell:empty:not(:focus)  {
+                        background-image: url("plus.png");
+                        background-repeat: no-repeat;
+                        background-position: center;
                         background-color:#888;
                         border:1px solid #eee;
-                    }
-                    .gjs-cell:empty:not(:focus)::before  {
-                        content: attr(data-text);
-                        position: relative;
-                        background-color: #ccc;
-                        padding: 0.3em 0.5em;
-                        border-radius: 50%;
-                        top: calc(50% - 0.5em);
-                        left: calc(50% - 0.5em);
-                    }
-                    .gjs-row:empty:not(:focus)::before {
-                        content: attr(data-text);
-                        position: relative;
-                        background-color: #ccc;
-                        padding: 0.3em 0.5em;
-                        border-radius: 50%;
-                        top: calc(50% - 0.5em);
-                        left: calc(50% - 0.5em);
                     }
                     </style>`;
                     break;
@@ -653,30 +622,18 @@ export default function Buidler(props) {
                     }
                                             
                     .gjs-row:empty:not(:focus)  {
+                        background-image: url("plus.png");
+                        background-repeat: no-repeat;
+                        background-position: center;
                         background-color:#555;
                         border:1px solid #ddd;
                     }
                     .gjs-cell:empty:not(:focus)  {
+                        background-image: url("plus.png");
+                        background-repeat: no-repeat;
+                        background-position: center;
                         background-color:#888;
                         border:1px solid #eee;
-                    }
-                    .gjs-cell:empty:not(:focus)::before  {
-                        content: attr(data-text);
-                        position: relative;
-                        background-color: #ccc;
-                        padding: 0.3em 0.5em;
-                        border-radius: 50%;
-                        top: calc(50% - 0.5em);
-                        left: calc(50% - 0.5em);
-                    }
-                    .gjs-row:empty:not(:focus)::before {
-                        content: attr(data-text);
-                        position: relative;
-                        background-color: #ccc;
-                        padding: 0.3em 0.5em;
-                        border-radius: 50%;
-                        top: calc(50% - 0.5em);
-                        left: calc(50% - 0.5em);
                     }
                     </style>`
                     break;
