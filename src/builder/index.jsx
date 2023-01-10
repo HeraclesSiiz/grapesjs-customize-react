@@ -467,7 +467,7 @@ export default function Buidler(props) {
         let blocks = blockManager.getAll();
         blocks.map((block, index) => {
             block.attributes.media = '<img src = "buildericons/' + svgNameList[index] + '.svg">';
-            
+            console.log(block.attributes.label,block.attributes)
             switch(block.attributes.label){
                 case '1 Column':
                     block.attributes.content =
@@ -643,6 +643,11 @@ export default function Buidler(props) {
                     }
                     </style>`
                     break;
+                case 'Image':
+                    block.attributes.content.style = {
+                        color:'black',
+                        'max-width':'100%'
+                    };
             }
             blocks[index] = block;
         });
