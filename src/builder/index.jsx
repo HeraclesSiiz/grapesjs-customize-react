@@ -187,7 +187,7 @@ export default function Buidler(props) {
         const blockManager = editor.Blocks;
 
         let panels = panelManager.getPanels();
-
+          
         panelManager.addButton('views', {
             id: 'open-html-blocks',
             attributes: {title: "html blocks"},
@@ -195,50 +195,38 @@ export default function Buidler(props) {
             command: {
                 run: function (editor) {
                     blockManager.add('header', {
-                        label: 'header',
+                        label: 'Header',
                         content: 
-                        `<html lang="en">
-                        <head>
-                        <title>Page Title</title>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        `<header>
+                            <div class="header">
+                            <h1>Header</h1>
+                            <p>My supercool header</p>
+                            </div>
+                            
+                            <div class="content">
+                            <h1>Content</h1>
+                            <p>Some content blablabla, some content blablabla.</p>
+                            <p>Some content blablabla, some content blablabla.</p>
+                            <p>Some content blablabla, some content blablabla.</p>
+                            </div>
+                        </header>
+
                         <style>
-                        /* Style the body */
-                        body {
-                          font-family: Arial;
-                          margin: 0;
-                        }
                         
                         /* Header/Logo Title */
                         .header {
-                          padding: 60px;
-                          text-align: center;
-                          background: #1abc9c;
-                          color: white;
-                          font-size: 30px;
+                        padding: 60px;
+                        text-align: center;
+                        background: #1abc9c;
+                        color: white;
+                        font-size: 30px;
                         }
                         
                         /* Page Content */
                         .content {padding:20px;}
-                        </style>
-                        </head>
-                        <body>
-                        
-                        <div class="header">
-                          <h1>Header</h1>
-                          <p>My supercool header</p>
-                        </div>
-                        
-                        <div class="content">
-                          <h1>Content</h1>
-                          <p>Some content blablabla, some content blablabla.</p>
-                          <p>Some content blablabla, some content blablabla.</p>
-                          <p>Some content blablabla, some content blablabla.</p>
-                        </div>
-                        
-                        </body>
-                        </html>`,
+                        </style>`,
                         category: 'html',
+                        type:'header',
                         media:'<img src = "header.png">',
                         attributes: {
                         title: 'Insert h1 block'
@@ -246,23 +234,54 @@ export default function Buidler(props) {
                     });
                     
                     blockManager.add('blog', {
-                        label: 'blog',
+                        label: 'Blog',
                         content: 
-                        `<html>
-                        <head>
-                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        `<div>
+                            <div class="header">
+                            <h2>Blog Name</h2>
+                            </div>
+                            
+                            <div class="row">
+                            <div class="leftcolumn">
+                                <div class="card">
+                                <h2>TITLE HEADING</h2>
+                                <h5>Title description, Dec 7, 2017</h5>
+                                <div class="fakeimg" style="height:200px;">Image</div>
+                                <p>Some text..</p>
+                                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </div>
+                                <div class="card">
+                                <h2>TITLE HEADING</h2>
+                                <h5>Title description, Sep 2, 2017</h5>
+                                <div class="fakeimg" style="height:200px;">Image</div>
+                                <p>Some text..</p>
+                                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </div>
+                            </div>
+                            <div class="rightcolumn">
+                                <div class="card">
+                                <h2>About Me</h2>
+                                <div class="fakeimg" style="height:100px;">Image</div>
+                                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                                </div>
+                                <div class="card">
+                                <h3>Popular Post</h3>
+                                <div class="fakeimg">Image</div><br>
+                                <div class="fakeimg">Image</div><br>
+                                <div class="fakeimg">Image</div>
+                                </div>
+                                <div class="card">
+                                <h3>Follow Me</h3>
+                                <p>Some text..</p>
+                                </div>
+                            </div>
+                            </div>
+                            
+                            <div class="footer">
+                            <h2>Footer</h2>
+                            </div>
+                        </div>
                         <style>
-                        * {
-                          box-sizing: border-box;
-                        }
-                        
-                        /* Add a gray background color with some padding */
-                        body {
-                          font-family: Arial;
-                          padding: 20px;
-                          background: #f1f1f1;
-                        }
-                        
                         /* Header/Blog Title */
                         .header {
                           padding: 30px;
@@ -321,56 +340,7 @@ export default function Buidler(props) {
                             padding: 0;
                           }
                         }
-                        </style>
-                        </head>
-                        <body>
-                        
-                        <div class="header">
-                          <h2>Blog Name</h2>
-                        </div>
-                        
-                        <div class="row">
-                          <div class="leftcolumn">
-                            <div class="card">
-                              <h2>TITLE HEADING</h2>
-                              <h5>Title description, Dec 7, 2017</h5>
-                              <div class="fakeimg" style="height:200px;">Image</div>
-                              <p>Some text..</p>
-                              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                            </div>
-                            <div class="card">
-                              <h2>TITLE HEADING</h2>
-                              <h5>Title description, Sep 2, 2017</h5>
-                              <div class="fakeimg" style="height:200px;">Image</div>
-                              <p>Some text..</p>
-                              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                            </div>
-                          </div>
-                          <div class="rightcolumn">
-                            <div class="card">
-                              <h2>About Me</h2>
-                              <div class="fakeimg" style="height:100px;">Image</div>
-                              <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-                            </div>
-                            <div class="card">
-                              <h3>Popular Post</h3>
-                              <div class="fakeimg">Image</div><br>
-                              <div class="fakeimg">Image</div><br>
-                              <div class="fakeimg">Image</div>
-                            </div>
-                            <div class="card">
-                              <h3>Follow Me</h3>
-                              <p>Some text..</p>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div class="footer">
-                          <h2>Footer</h2>
-                        </div>
-                        
-                        </body>
-                        </html>`,
+                        </style>`,
                         category: 'html',
                         media:'<img src = "blog.jpg">',
                         attributes: {
@@ -467,7 +437,6 @@ export default function Buidler(props) {
         let blocks = blockManager.getAll();
         blocks.map((block, index) => {
             block.attributes.media = '<img src = "buildericons/' + svgNameList[index] + '.svg">';
-            console.log(block.attributes.label,block.attributes)
             switch(block.attributes.label){
                 case '1 Column':
                     block.attributes.content =
@@ -661,6 +630,101 @@ export default function Buidler(props) {
                 }
             }
         });
+        //     isComponent: el => el.tagName == 'FORM',
+        //     model: {
+        //         init() {
+        //         },
+        //         defaults: {
+        //             traits: [{
+        //                 type: 'checkbox',
+        //                 name: 'global',
+        //                 label: 'Global',
+        //             }],
+        //         },
+        //     },
+        //     view: {
+        //         init() {
+        //             this.listenTo(this.model, 'change:attributes:global', this.changeGlobal);
+        //         },
+        //         changeGlobal() {
+        //             const component = editor.getSelected();
+        //             const properties = this.model.attributes.attributes;
+        //             const state = properties.global;
+        //             const content = component.toHTML();
+        //             console.log(state,content);
+        //             if(properties.global){
+                        
+        //             }
+        //         },
+        //         onRender() {
+        //         }
+        //     }
+        // });
+
+        // editor.DomComponents.addType('header', {
+        //     isComponent: el => el.tagName == 'header',
+        //     model: {
+        //         init() {
+        //         },
+        //         defaults: {
+        //             tagName:'header',
+        //             traits: [{
+        //                 type: 'checkbox',
+        //                 name: 'global',
+        //                 label: 'Global',
+        //             }],
+        //         },
+        //     },
+        //     view: {
+        //         init() {
+        //             this.listenTo(this.model, 'change:attributes:global', this.changeGlobal);
+        //         },
+        //         changeGlobal() {
+        //             const component = editor.getSelected();
+        //             const properties = this.model.attributes.attributes;
+        //             const state = properties.global;
+        //             const content = component.toHTML();
+        //             console.log(state,content);
+        //             if(properties.global){
+                        
+        //             }
+        //         },
+        //         onRender() {
+        //         }
+        //     }
+        // });
+
+        // editor.DomComponents.addType('footer', {
+        //     isComponent: el => el.tagName == 'FOOTER',
+        //     model: {
+        //         init() {
+        //         },
+        //         defaults: {
+        //             traits: [{
+        //                 type: 'checkbox',
+        //                 name: 'global',
+        //                 label: 'Global',
+        //             }],
+        //         },
+        //     },
+        //     view: {
+        //         init() {
+        //             this.listenTo(this.model, 'change:attributes:global', this.changeGlobal);
+        //         },
+        //         changeGlobal() {
+        //             const component = editor.getSelected();
+        //             const properties = this.model.attributes.attributes;
+        //             const state = properties.global;
+        //             const content = component.toHTML();
+        //             console.log(state,content);
+        //             if(properties.global){
+                        
+        //             }
+        //         },
+        //         onRender() {
+        //         }
+        //     }
+        // });
 
         const undoManager = editor.UndoManager
         undoManager.start();
