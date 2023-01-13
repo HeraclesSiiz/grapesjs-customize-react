@@ -9,6 +9,7 @@ import forms from 'grapesjs-plugin-forms';
 import pgexport from 'grapesjs-plugin-export';
 import navbar from 'grapesjs-navbar';
 import countdown from 'grapesjs-component-countdown';
+import stylebg from 'grapesjs-style-bg';
 
 import 'grapesjs/dist/css/grapes.min.css';
 import './grapes.css';
@@ -43,7 +44,7 @@ export default function Buidler(props) {
                 storeCss: true,
             },
             plugins: [
-                basic, plugin, forms, navbar, countdown, pgexport
+                basic, plugin, forms, navbar, countdown, pgexport,stylebg
             ],
             pluginsOpts: {
                 [forms]:{
@@ -353,6 +354,7 @@ export default function Buidler(props) {
                             return true; 
                         } 
                     }));
+
                     const html_blocks = document.querySelectorAll('.gjs-block');
                     for(var html_block of html_blocks){
                         html_block.style.width = "90%";
@@ -624,42 +626,12 @@ export default function Buidler(props) {
         editor.on('component:selected', () => {
             const selected = editor.getSelected();
             const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
-            if (selected.attributes.name == "Row" || selected.attributes.name == "Cell") {
+            if (selected.attributes.name === "Row" || selected.attributes.name === "Cell") {
                 if(!openBlocksBtn || !openBlocksBtn.get('active')){
                     openBlocksBtn && openBlocksBtn.set('active', 1);
                 }
             }
         });
-        //     isComponent: el => el.tagName == 'FORM',
-        //     model: {
-        //         init() {
-        //         },
-        //         defaults: {
-        //             traits: [{
-        //                 type: 'checkbox',
-        //                 name: 'global',
-        //                 label: 'Global',
-        //             }],
-        //         },
-        //     },
-        //     view: {
-        //         init() {
-        //             this.listenTo(this.model, 'change:attributes:global', this.changeGlobal);
-        //         },
-        //         changeGlobal() {
-        //             const component = editor.getSelected();
-        //             const properties = this.model.attributes.attributes;
-        //             const state = properties.global;
-        //             const content = component.toHTML();
-        //             console.log(state,content);
-        //             if(properties.global){
-                        
-        //             }
-        //         },
-        //         onRender() {
-        //         }
-        //     }
-        // });
 
         // editor.DomComponents.addType('header', {
         //     isComponent: el => el.tagName == 'header',
@@ -744,7 +716,7 @@ export default function Buidler(props) {
 
     const setPreview = (run) => {
         const commandManager = editor.Commands
-        if (run == true) {
+        if (run === true) {
             commandManager.get('preview').run(editor)
             setIndex(1);
         } else {
