@@ -46,7 +46,7 @@ export default function Buidler(props) {
                 storeCss: true,
             },
             plugins: [
-                basic, plugin, forms, navbar, countdown, pgexport,divider ,stylebg
+                basic, plugin, forms, navbar, countdown, pgexport, divider, stylebg
             ],
             pluginsOpts: {
                 [forms]: {
@@ -469,49 +469,21 @@ export default function Buidler(props) {
             `,
         }, { at: 13 });
 
-        // blockManager.add('background_section', {
-        //     label: 'Background Section',
-        //     content:
-        //         `<div class = .gjs-shape-divider data-gjs-type="shape-divider"> 
-        //         </div>
-        //         <style>
-        //             .gjs-shape-divider{
-        //                 position:absolute;
-        //                 width:100%;
-        //                 height:100px;
-        //                 color:black;
-        //                 overflow:hidden;
-        //             }
-        //             .gjs-shape-divider > svg{
-        //                 height:100%;
-        //                 width:100%;
-        //                 transform:scaleY(-1);
-        //             }
-        //             .gjs-shape-divider--fl-v > svg{
-        //                 transform:scaleY(1);
-        //             }
-        //             .gjs-shape-divider--fl-h > svg{
-        //                 transform:scaleX(-1) scaleY(-1);
-        //             }
-        //             .gjs-shape-divider--fl-v-h > svg{
-        //                 transform:scaleY(1) scaleX(-1);
-        //             }
-        //             .gjs-shape-divider > svg > path{
-        //                 fill:currentColor;
-        //             }
-        //             .gjs-shape-divider-inv > path{
-        //             transform:scale(-1, -1) translate(-100%, -100%);
-        //             }
-        //         </style>
-        //         `
-        // });
-
         let blocks = blockManager.getAll();
         blocks.map((block, index) => {
             block.attributes.media = '<img src = "buildericons/' + svgNameList[index] + '.svg">';
             switch (block.attributes.label) {
                 case 'Shape Divider':
-                    console.log(block);
+                    block.attributes.content = `<div class= .gjs-shape-divider data-gjs-type=\"shape-divider\"></div>
+                    <style>
+                        .gjs-shape-divider{
+                            position:absolute;
+                            width:100%;
+                            height:100px;
+                            color:black;
+                            overflow:hidden;
+                        }
+                    </style>`;
                     break;
                 case '1 Column':
                     block.attributes.content =
