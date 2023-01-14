@@ -9,21 +9,23 @@ import forms from 'grapesjs-plugin-forms';
 import pgexport from 'grapesjs-plugin-export';
 import navbar from 'grapesjs-navbar';
 import countdown from 'grapesjs-component-countdown';
+import divider from 'grapesjs-shape-divider';
 import stylebg from 'grapesjs-style-bg';
+
 
 import 'grapesjs/dist/css/grapes.min.css';
 import './grapes.css';
 import './index.scss';
 import 'semantic-ui-css/semantic.min.css';
 
-const svgNameList = ['column', '2columns', '3columns', '2col37', 'text', 'link', 'image', 'video', 'map', 'linkblock', 'quote', 'textsection', 'form','form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio', 'navbar', 'countdown'
+const svgNameList = ['column', '2columns', '3columns', '2col37', 'text', 'link', 'image', 'video', 'map', 'linkblock', 'quote', 'textsection', 'form', 'form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio', 'navbar', 'countdown', 'image'
 ];
 
 const panelList = [];
 panelList[1] = ['ti ti-device-desktop', 'ti ti-device-tablet', 'ti ti-device-mobile'];
 panelList[0] = [];
 panelList[2] = ['ti ti-marquee-2', '', 'ti ti-arrows-maximize', 'ti ti-code', '', '', 'ti ti-file-import', 'ti ti-eraser'];
-panelList[3] = ['ti ti-pencil', 'ti ti-settings', 'ti ti-layers-subtract', 'ti ti-layout-grid','ti ti-puzzle'];
+panelList[3] = ['ti ti-pencil', 'ti ti-settings', 'ti ti-layers-subtract', 'ti ti-layout-grid', 'ti ti-puzzle'];
 
 export default function Buidler(props) {
     const [editor, setEditor] = React.useState(null);
@@ -44,11 +46,11 @@ export default function Buidler(props) {
                 storeCss: true,
             },
             plugins: [
-                basic, plugin, forms, navbar, countdown, pgexport,stylebg
+                basic, plugin, forms, navbar, countdown, pgexport,divider ,stylebg
             ],
             pluginsOpts: {
-                [forms]:{
-                    blocks:[ 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio']
+                [forms]: {
+                    blocks: ['input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio']
                 },
                 [pgexport]: {
                     addExportBtn: true,
@@ -65,7 +67,7 @@ export default function Buidler(props) {
                 },
             },
             canvas: {
-                styles:['https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i|Open+Sans:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Lato:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Montserrat:300,300i,400,400i,500,500i,700,700i,800,80i,900,900i|Oswald:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Source+Sans+Pro:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Slabo+27px/13px:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Raleway:400,400i,600,600i,700,700i,800,800i,900,900i|Poppins:400,400i,600,600i,700,700i,800,800i,900,900i|Josefin+Sans:100,100i,200,200i,300.300i.400,400i,600,600i,700,700i,800,800i,900,900i|Nunito:100,100i,200,200i,300.300i.400,400i,600,600i,700,700i,800,800i,900,900i&subset=latin,latin-ext']
+                styles: ['https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i|Open+Sans:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Lato:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Montserrat:300,300i,400,400i,500,500i,700,700i,800,80i,900,900i|Oswald:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Source+Sans+Pro:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Slabo+27px/13px:300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Raleway:400,400i,600,600i,700,700i,800,800i,900,900i|Poppins:400,400i,600,600i,700,700i,800,800i,900,900i|Josefin+Sans:100,100i,200,200i,300.300i.400,400i,600,600i,700,700i,800,800i,900,900i|Nunito:100,100i,200,200i,300.300i.400,400i,600,600i,700,700i,800,800i,900,900i&subset=latin,latin-ext']
             }
         });
 
@@ -85,7 +87,7 @@ export default function Buidler(props) {
         fontOptions.push({ value: 'Poppins', name: 'Poppins' });
         fontOptions.push({ value: 'Josefin Sans', name: 'Josefin Sans' });
         fontOptions.push({ value: 'Nunito', name: 'Nunito' });
-        fontManager.set('list',fontOptions);
+        fontManager.set('list', fontOptions);
 
         styleManager.removeProperty('dimension', 'width');
         styleManager.removeProperty('dimension', 'height');
@@ -96,16 +98,16 @@ export default function Buidler(props) {
             label: 'Width',
             property: 'width',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 2000,
-          }, { at: 0 });
+        }, { at: 0 });
 
         styleManager.addProperty('dimension', {
             label: 'Height',
             property: 'height',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 2000,
         }, { at: 1 });
@@ -114,34 +116,34 @@ export default function Buidler(props) {
             label: 'margin top',
             property: 'margin-top',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 200,
-          }, { at: 4 });
+        }, { at: 4 });
 
         styleManager.addProperty('dimension', {
             label: 'margin right',
             property: 'margin-right',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 200,
         }, { at: 5 });
-        
+
         styleManager.addProperty('dimension', {
             label: 'margin bottom',
             property: 'margin-bottom',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 200,
         }, { at: 6 });
-        
+
         styleManager.addProperty('dimension', {
             label: 'margin left',
             property: 'margin-left',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 200,
         }, { at: 7 });
@@ -150,55 +152,86 @@ export default function Buidler(props) {
             label: 'padding top',
             property: 'padding-top',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 200,
-          }, { at: 8 });
+        }, { at: 8 });
 
         styleManager.addProperty('dimension', {
             label: 'padding right',
             property: 'padding-right',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 200,
         }, { at: 9 });
-        
+
         styleManager.addProperty('dimension', {
             label: 'padding bottom',
             property: 'padding-bottom',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 200,
         }, { at: 10 });
-        
+
         styleManager.addProperty('dimension', {
             label: 'padding left',
             property: 'padding-left',
             type: 'slider',
-            units:['px','%','em','rem','vh','vw'],
+            units: ['px', '%', 'em', 'rem', 'vh', 'vw'],
             min: 0,
             max: 200,
         }, { at: 11 });
-          
+
+        styleManager.addSector('divider', {
+            name: 'Fancy Divider',
+            properties: [
+                {
+                    label: 'type',
+                    type: 'select',
+                    options: [
+                        { id: 'asymmetrical', label: 'Asymmetrical' },
+                        { id: 'offset_corner', label: 'Offset Corner' },
+                        { id: 'rounded_corner', label: 'Rounded Corner' },
+                    ]
+                }, {
+                    label: 'direction',
+                    type: 'radio',
+                    options: [
+                        { id: 'top', label: 'top' },
+                        { id: 'right', label: 'right' },
+                        { id: 'bottom', label: 'bottom' },
+                        { id: 'left', label: 'left' },
+                    ]
+                }, {
+                    label: 'height',
+                    type: 'slider',
+                    min: 0,
+                    max: 500,
+                    units: ['px']
+                },
+
+            ],
+        });
+
         styleManager.render();
 
         const panelManager = editor.Panels;
         const blockManager = editor.Blocks;
 
         let panels = panelManager.getPanels();
-          
+
         panelManager.addButton('views', {
             id: 'open-html-blocks',
-            attributes: {title: "html blocks"},
+            attributes: { title: "html blocks" },
             active: false,
             command: {
                 run: function (editor) {
                     blockManager.add('header', {
                         label: 'Header',
-                        content: 
-                        `<header>
+                        content:
+                            `<header>
                             <div class="header">
                             <h1>Header</h1>
                             <p>My supercool header</p>
@@ -227,17 +260,17 @@ export default function Buidler(props) {
                         .content {padding:20px;}
                         </style>`,
                         category: 'html',
-                        type:'header',
-                        media:'<img src = "header.png">',
+                        type: 'header',
+                        media: '<img src = "header.png">',
                         attributes: {
-                        title: 'Insert h1 block'
+                            title: 'Insert h1 block'
                         }
                     });
-                    
+
                     blockManager.add('blog', {
                         label: 'Blog',
-                        content: 
-                        `<div>
+                        content:
+                            `<div>
                             <div class="header">
                             <h2>Blog Name</h2>
                             </div>
@@ -343,30 +376,30 @@ export default function Buidler(props) {
                         }
                         </style>`,
                         category: 'html',
-                        media:'<img src = "blog.jpg">',
+                        media: '<img src = "blog.jpg">',
                         attributes: {
                             title: 'Insert h3 block',
                         }
                     });
 
-                    blockManager.render( blocks.filter((block) => { 
+                    blockManager.render(blocks.filter((block) => {
                         if (block.attributes.category.attributes.label === 'html') {
-                            return true; 
-                        } 
+                            return true;
+                        }
                     }));
 
                     const html_blocks = document.querySelectorAll('.gjs-block');
-                    for(var html_block of html_blocks){
+                    for (var html_block of html_blocks) {
                         html_block.style.width = "90%";
                     }
 
                     editor.runCommand('open-blocks');
                 },
                 stop: function (editor) {
-                    blockManager.render( blocks.filter((block) => {
+                    blockManager.render(blocks.filter((block) => {
                         if (block.attributes.category.attributes.label !== 'html') {
-                            return true; 
-                        } 
+                            return true;
+                        }
                     }));
                     const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
                     openBlocksBtn.set('active', 0);
@@ -385,7 +418,7 @@ export default function Buidler(props) {
         blockManager.add('lead_generation', {
             label: 'Lead Generation',
             category: 'forms',
-            content: 
+            content:
                 `<form method='get' action='/'>
                     <input type='text' placeholder='Name' name='form_name' class='form_name'>
                     <input type='email' placeholder='Email' name='form_email' class='form_email'>
@@ -405,13 +438,13 @@ export default function Buidler(props) {
                     }
                 </style>
                 `
-          }, { at: 12 });
+        }, { at: 12 });
 
         blockManager.add('contact_form', {
-        label: 'Contact Form',
-        category: 'forms',
-        content: 
-            `<form method='get' action='/'>
+            label: 'Contact Form',
+            category: 'forms',
+            content:
+                `<form method='get' action='/'>
                 <input type='text' placeholder='Name' name='form_name' class='form_name'>
                 <input type='email' placeholder='Email' name='form_email' class='form_email'>
                 <input type='textarea' placeholder='Message' name='form_message' class='form_message'>
@@ -436,13 +469,53 @@ export default function Buidler(props) {
             `,
         }, { at: 13 });
 
+        // blockManager.add('background_section', {
+        //     label: 'Background Section',
+        //     content:
+        //         `<div class = .gjs-shape-divider data-gjs-type="shape-divider"> 
+        //         </div>
+        //         <style>
+        //             .gjs-shape-divider{
+        //                 position:absolute;
+        //                 width:100%;
+        //                 height:100px;
+        //                 color:black;
+        //                 overflow:hidden;
+        //             }
+        //             .gjs-shape-divider > svg{
+        //                 height:100%;
+        //                 width:100%;
+        //                 transform:scaleY(-1);
+        //             }
+        //             .gjs-shape-divider--fl-v > svg{
+        //                 transform:scaleY(1);
+        //             }
+        //             .gjs-shape-divider--fl-h > svg{
+        //                 transform:scaleX(-1) scaleY(-1);
+        //             }
+        //             .gjs-shape-divider--fl-v-h > svg{
+        //                 transform:scaleY(1) scaleX(-1);
+        //             }
+        //             .gjs-shape-divider > svg > path{
+        //                 fill:currentColor;
+        //             }
+        //             .gjs-shape-divider-inv > path{
+        //             transform:scale(-1, -1) translate(-100%, -100%);
+        //             }
+        //         </style>
+        //         `
+        // });
+
         let blocks = blockManager.getAll();
         blocks.map((block, index) => {
             block.attributes.media = '<img src = "buildericons/' + svgNameList[index] + '.svg">';
-            switch(block.attributes.label){
+            switch (block.attributes.label) {
+                case 'Shape Divider':
+                    console.log(block);
+                    break;
                 case '1 Column':
                     block.attributes.content =
-                    `<div class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
+                        `<div class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
                         <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                     </div>
                     <style>  
@@ -483,7 +556,7 @@ export default function Buidler(props) {
                     </style>`;
                     break;
                 case '2 Columns':
-                    block.attributes.content = 
+                    block.attributes.content =
                         `<div  class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
                             <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                             <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
@@ -525,8 +598,8 @@ export default function Buidler(props) {
                         </style>`;
                     break;
                 case '3 Columns':
-                    block.attributes.content = 
-                    `<div  class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
+                    block.attributes.content =
+                        `<div  class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
                         <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                         <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                         <div  class='gjs-cell' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
@@ -568,8 +641,8 @@ export default function Buidler(props) {
                     </style>`;
                     break;
                 case '2 Columns 3/7':
-                    block.attributes.content = 
-                    `<div  class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
+                    block.attributes.content =
+                        `<div  class='gjs-row' data-gjs-droppable='.gjs-cell' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}' data-gjs-name='Row'>
                         <div  class='gjs-cell30' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                         <div  class='gjs-cell70' data-gjs-draggable='.gjs-row' data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":1,"bl":0,"br":0,"minDim":1,"bc":0,"currentUnit":1,"step":0.2}' data-gjs-name='Cell'></div>
                     </div>
@@ -616,8 +689,8 @@ export default function Buidler(props) {
                     break;
                 case 'Image':
                     block.attributes.content.style = {
-                        color:'black',
-                        'max-width':'100%'
+                        color: 'black',
+                        'max-width': '100%'
                     };
             }
             blocks[index] = block;
@@ -627,44 +700,74 @@ export default function Buidler(props) {
             const selected = editor.getSelected();
             const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
             if (selected.attributes.name === "Row" || selected.attributes.name === "Cell") {
-                if(!openBlocksBtn || !openBlocksBtn.get('active')){
+                if (!openBlocksBtn || !openBlocksBtn.get('active')) {
                     openBlocksBtn && openBlocksBtn.set('active', 1);
                 }
             }
         });
 
-        // editor.DomComponents.addType('header', {
-        //     isComponent: el => el.tagName == 'header',
-        //     model: {
-        //         init() {
-        //         },
-        //         defaults: {
-        //             tagName:'header',
-        //             traits: [{
-        //                 type: 'checkbox',
-        //                 name: 'global',
-        //                 label: 'Global',
-        //             }],
-        //         },
-        //     },
-        //     view: {
-        //         init() {
-        //             this.listenTo(this.model, 'change:attributes:global', this.changeGlobal);
-        //         },
-        //         changeGlobal() {
-        //             const component = editor.getSelected();
-        //             const properties = this.model.attributes.attributes;
-        //             const state = properties.global;
-        //             const content = component.toHTML();
-        //             console.log(state,content);
-        //             if(properties.global){
-                        
-        //             }
-        //         },
-        //         onRender() {
-        //         }
-        //     }
-        // });
+        editor.DomComponents.addType('background_section', {
+            isComponent: el => el.tagName == 'div',
+            model: {
+                init() {
+                },
+                defaults: {
+                    tagName: 'header',
+                    traits: [
+                        {
+                            type: 'checkbox',
+                            name: 'apply_divider',
+                            label: 'Apply Fancy Divider',
+                        },
+                        {
+                            type: 'select',
+                            name: 'type',
+                            label: 'type',
+                            options: [
+                                { id: 'asymmetrical', label: 'Asymmetrical' },
+                                { id: 'offset_corner', label: 'Offset Corner' },
+                                { id: 'rounded_corner', label: 'Rounded Corner' },
+                            ]
+                        }, {
+                            type: 'radio',
+                            name: 'direction',
+                            label: 'direction',
+                            options: [
+                                { id: 'top', label: 'top' },
+                                { id: 'right', label: 'right' },
+                                { id: 'bottom', label: 'bottom' },
+                                { id: 'left', label: 'left' },
+                            ]
+                        }, {
+                            type: 'slider',
+                            name: 'height',
+                            label: 'height',
+                            min: 0,
+                            max: 500,
+                            units: ['px']
+                        }
+                    ],
+                },
+            },
+            view: {
+                init() {
+                    this.listenTo(this.model, 'change:attributes:apply_divider', this.changeDivider);
+                    this.listenTo(this.model, 'change:attributes:type', this.changeDivider);
+                    this.listenTo(this.model, 'change:attributes:direction', this.changeDivider);
+                    this.listenTo(this.model, 'change:attributes:height', this.changeDivider);
+                },
+                changeDivider() {
+                    const component = editor.getSelected();
+                    const properties = this.model.attributes.attributes;
+                    console.log(properties);
+                    if (properties.global) {
+
+                    }
+                },
+                onRender() {
+                }
+            }
+        });
 
         // editor.DomComponents.addType('footer', {
         //     isComponent: el => el.tagName == 'FOOTER',
@@ -690,7 +793,7 @@ export default function Buidler(props) {
         //             const content = component.toHTML();
         //             console.log(state,content);
         //             if(properties.global){
-                        
+
         //             }
         //         },
         //         onRender() {
@@ -707,12 +810,12 @@ export default function Buidler(props) {
         editor.on('stop:preview', () => {
             setIndex(4);
         });
-        
+
         editor.load();
         editor.Commands.stop('open-html-blocks');
 
         setEditor(editor);
-      }, []);
+    }, []);
 
     const setPreview = (run) => {
         const commandManager = editor.Commands
@@ -747,7 +850,7 @@ export default function Buidler(props) {
         <>
             <Button.Group className='control demo' style={{ zIndex: zIndex }}>
                 <Button onClick={() => setPreview(true)} className="page_preview">Preview</Button>
-                <Button  color="blue" className="page_save">Save</Button>
+                <Button color="blue" className="page_save">Save</Button>
             </Button.Group>
             <Icon onClick={() => setPreview(false)} style={{ zIndex: 5 - zIndex }} name="eye slash" size='big' className="page_preview"></Icon>
             <Button.Group className='control history' style={{ zIndex: zIndex }}>
