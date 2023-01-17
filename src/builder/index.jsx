@@ -183,8 +183,6 @@ export default function Buidler(props) {
             min: 0,
             max: 200,
         }, { at: 11 });
-        
-        styleManager.render();
 
         const panelManager = editor.Panels;
         const blockManager = editor.Blocks;
@@ -844,7 +842,6 @@ export default function Buidler(props) {
                 const back_section_style = getComputedStyle(back_section.view.el);
                 const section_height = parseInt(back_section_style.height.replace('px',''));
                 let svg_height;
-                console.log(svg.getStyle().height);
                 if(svg.getStyle().height != undefined){
                     svg_height = parseInt(svg.getStyle().height.replace('px',''));
                 }
@@ -853,25 +850,25 @@ export default function Buidler(props) {
                 }
 
                 switch(attr.name){
-                    case 'flex-direction':
+                    case 'flex-direction':                  
                         switch(attr.value){
                             case 'column':
-                                back_section.setStyle({'flex-direction':'column'});
+                                back_section.setStyle({width:'100%','flex-direction':'column'});
                                 svg_contain.setStyle({width:'100%'});
                                 svg.setStyle({height:svg_height+'px','width':'100%',transform:'rotate(0deg)'});
                                 break;
                             case 'row-reverse':
-                                back_section.setStyle({'flex-direction':'row-reverse'});
+                                back_section.setStyle({width:'100%','flex-direction':'row-reverse'});
                                 svg_contain.setStyle({width:svg_height+'px'});
                                 svg.setStyle({height:svg_height+'px',width:back_section_style.height,transform:'rotate(90deg)','transform-origin':svg_height/2+'px '+svg_height/2+'px'});
                                 break;
                             case 'column-reverse':
-                                back_section.setStyle({'flex-direction':'column-reverse'});
+                                back_section.setStyle({width:'100%','flex-direction':'column-reverse'});
                                 svg_contain.setStyle({width:'100%'});
                                 svg.setStyle({height:svg_height+'px',width:'100%',transform:'rotate(180deg)',marginBottom:'-5px'});
                                 break;
                             case 'row':
-                                back_section.setStyle({'flex-direction':'row'});
+                                back_section.setStyle({width:'100%','flex-direction':'row'});
                                 svg_contain.setStyle({width:svg_height+'px'});
                                 svg.setStyle({height:svg_height+'px',width:back_section_style.height,transform:'rotate(270deg)','transform-origin':section_height/2+'px '+section_height/2+'px'});
                                 break;
