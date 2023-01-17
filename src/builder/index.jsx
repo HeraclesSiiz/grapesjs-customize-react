@@ -833,40 +833,64 @@ export default function Buidler(props) {
         editor.on('style:property:update', styleEl => {
             const properties = ['divider-type','flex-direction','divider-height'];
             const attr = styleEl.property.attributes;
-            const back_section = editor.getSelected();
-
-            if(attr.name == 'flex-direction'){
+            
+            if(properties.includes(attr.name)){
+                console.log(attr.name,attr.value);
+                const back_section = editor.getSelected();
                 const svg_contain = back_section.attributes.components.at(0);
+                const edit_contain = back_section.attributes.components.at(1);
                 const svg = svg_contain.attributes.components.at(0);
-
-                switch(attr.value){
-                    case 'column':
-                        back_section.setStyle({'flex-direction':'column'});
-                        svg_contain.setStyle({'width':'100%'});
-                        svg.setStyle({'width':'100%'});
-                        break;
-                    case 'row-reverse':
-                        back_section.setStyle({'flex-direction':'row-reverse'});
-                        svg_contain.setStyle({'width':'100%'});
-                        svg.setStyle({'width':'100%'});
-                        break;
-                    case 'column-reverse':
-                        console.log(svg.getStyle());
-                        back_section.setStyle({'flex-direction':'column-reverse'});
-                        svg_contain.setStyle({'width':'100%'});
-                        svg.setStyle({'width':'100%','transform':'rotate(180deg)','margin-bottom':'-5px'});
-                        console.log(svg.getStyle());
-                        break;
-                    case 'row':
-                        break;
+                
+                const back_section_style = getComputedStyle(back_section.view.el);
+                const section_height = parseInt(back_section_style.height.replace('px',''));
+                let svg_height;
+                console.log(svg.getStyle().height);
+                if(svg.getStyle().height != undefined){
+                    svg_height = parseInt(svg.getStyle().height.replace('px',''));
                 }
-            }else if(attr.name == 'divider-height'){
-                const svg_contain = back_section.attributes.components.at(0);
-                const svg = svg_contain.attributes.components.at(0);
-                console.log(back_section.getStyle()['flex-direction'])
-                console.log(svg);
-                if(back_section.getStyle()['flex-direction'] !== 'row-reverse'){
-                    svg.setStyle({...svg.getStyle(),height:attr.value+'px'});
+                if(!svg_height){
+                    svg_height = 250;
+                }
+
+                switch(attr.name){
+                    case 'flex-direction':
+                        switch(attr.value){
+                            case 'column':
+                                back_section.setStyle({'flex-direction':'column'});
+                                svg_contain.setStyle({width:'100%'});
+                                svg.setStyle({height:svg_height+'px','width':'100%',transform:'rotate(0deg)'});
+                                break;
+                            case 'row-reverse':
+                                back_section.setStyle({'flex-direction':'row-reverse'});
+                                svg_contain.setStyle({width:svg_height+'px'});
+                                svg.setStyle({height:svg_height+'px',width:back_section_style.height,transform:'rotate(90deg)','transform-origin':svg_height/2+'px '+svg_height/2+'px'});
+                                break;
+                            case 'column-reverse':
+                                back_section.setStyle({'flex-direction':'column-reverse'});
+                                svg_contain.setStyle({width:'100%'});
+                                svg.setStyle({height:svg_height+'px',width:'100%',transform:'rotate(180deg)',marginBottom:'-5px'});
+                                break;
+                            case 'row':
+                                back_section.setStyle({'flex-direction':'row'});
+                                svg_contain.setStyle({width:svg_height+'px'});
+                                svg.setStyle({height:svg_height+'px',width:back_section_style.height,transform:'rotate(270deg)','transform-origin':section_height/2+'px '+section_height/2+'px'});
+                                break;
+                        }
+                        break;
+                    case 'divider-height':
+                        console.log(attr.name,attr.value);
+                        edit_contain.setStyle({'flex-basis':'calc(100% - '+attr.value+'px)'});
+                        switch(back_section.getStyle()['flex-direction']){
+                            case 'row-reverse':
+                                svg.setStyle({...svg.getStyle(),'transform-origin':attr.value+'px '+attr.value+'px ',height:attr.value+'px'});
+                            case 'row':
+                            case 'column-reverse':
+                            case 'column':
+                                svg.setStyle({...svg.getStyle(),height:attr.value+'px'});
+                            default:
+                                svg.setStyle({...svg.getStyle(),height:attr.value+'px'});
+                        }
+                        break;
                 }
             }
         });
