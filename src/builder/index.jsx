@@ -776,11 +776,7 @@ export default function Buidler(props) {
                         }
                         break;
                     case 'divider-type':
-                        svg.attributes.attributes.src='divider/'+attr.value+'.svg';
-                        svg.view.attr.src='divider/'+attr.value+'.svg';
                         svg.view.$el[0].setAttribute('src','divider/'+attr.value+'.svg');
-                        console.log(svg);
-                        console.log(svg.attributes);
                         break;
                 }
             }
