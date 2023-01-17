@@ -808,68 +808,49 @@ export default function Buidler(props) {
 
         // editor.on('component:styleUpdate:height', (model) => { console.log(model); });
 
-        // editor.DomComponents.addType('Background-Section', {
-        //     extend: 'Background-Section',
-        //     extendFn: ['init'],
-        //     model: {
-        //       init() {
-        //           console.log(this);
-        //           this.listenTo(this, 'change:components',this.handleStyleChange);
-        //           this.listenTo(this, 'change:attributes', this.handleAttrChange);
+        editor.DomComponents.addType('Background-Section', {
+            model: {
+                init() {
+                },
+                defaults: {
+                    traits: [{
+                        label: 'Divider Type',
+                        name: 'type',
+                        type: 'select',
+                        options:[
+                            {id:'asymmetrical',label:'Asymmetrical'},
+                            {id:'offset_corner',label:'Offset Corner'},
+                            {id:'rounded_corner',label:'Rounded Corner'}
+                        ]
+                    },{
+                        label: 'Direction',
+                        name: 'flex-direction',
+                        type: 'select',
+                        options:[
+                            {id:'column',label:'Top'},
+                            {id:'row-reverse',label:'Right'},
+                            {id:'column-reverse',label:'Bottom'},
+                            {id:'row',label:'Left'}
+                        ]
+                    },{
+                        label: 'Divider Height',
+                        name: 'divider-height',
+                        type: 'number',
+                        min:0,
+                        max:2000,
+                        placeholder:'unit:px'
+                    }],
+                },
+            },
+            view: {
+                init() {
+                    this.listenTo(this.model, 'change:attributes', this.changeIntegration);
+                },
+                changeIntegration(){
 
-        //       },
-        //       handleChange(){
-        //         alert('handle changed');
-        //       },
-        //       handleStyleChange() {
-        //         alert('style changed');
-        //       },
-        //       handleAttrChange() {
-        //         alert('attr changed');
-        //       }
-        //     }
-        //   })
-
-        editor.on('style:property:update', styleEl => {
-            const properties = ['divider-type','flex-direction','divider-height'];
-            const attr = styleEl.property.attributes;
-            const back_section = editor.getSelected();
-
-            if(attr.name == 'flex-direction'){
-                const svg_contain = back_section.attributes.components.at(0);
-                const svg = svg_contain.attributes.components.at(0);
-
-                switch(attr.value){
-                    case 'column':
-                        back_section.setStyle({'flex-direction':'column'});
-                        svg_contain.setStyle({'width':'100%'});
-                        svg.setStyle({'width':'100%'});
-                        break;
-                    case 'row-reverse':
-                        back_section.setStyle({'flex-direction':'row-reverse'});
-                        svg_contain.setStyle({'width':'100%'});
-                        svg.setStyle({'width':'100%'});
-                        break;
-                    case 'column-reverse':
-                        console.log(svg.getStyle());
-                        back_section.setStyle({'flex-direction':'column-reverse'});
-                        svg_contain.setStyle({'width':'100%'});
-                        svg.setStyle({'width':'100%','transform':'rotate(180deg)','margin-bottom':'-5px'});
-                        console.log(svg.getStyle());
-                        break;
-                    case 'row':
-                        break;
-                }
-            }else if(attr.name == 'divider-height'){
-                const svg_contain = back_section.attributes.components.at(0);
-                const svg = svg_contain.attributes.components.at(0);
-                console.log(back_section.getStyle()['flex-direction'])
-                console.log(svg);
-                if(back_section.getStyle()['flex-direction'] !== 'row-reverse'){
-                    svg.setStyle({...svg.getStyle(),height:attr.value+'px'});
                 }
             }
-        });
+        })
         
         editor.StyleManager.removeSector('flex');
         editor.on('component:selected', (component) => {
@@ -880,47 +861,6 @@ export default function Buidler(props) {
                     openBlocksBtn && openBlocksBtn.set('active', 1);
                 }
             }
-
-            if(component.attributes.type == 'Background-Section') {
-                editor.StyleManager.addSector('fancy_divider', {
-                    name: 'Fancy Divider',
-                    open: false,
-                    properties: [
-                        {
-                            label: 'type',
-                            name: 'divider-type',
-                            type: 'select',
-                            options: [
-                                { id: 'asymmetrical', label: 'Asymmetrical' },
-                                { id: 'offset_corner', label: 'Offset Corner' },
-                                { id: 'rounded_corner', label: 'Rounded Corner' },
-                            ]
-                        }, 
-                        {
-                            label: 'direction',
-                            name: 'flex-direction',
-                            type: 'radio',
-                            options: [
-                                { id: 'column', label: 'top' },
-                                { id: 'row-reverse', label: 'right' },
-                                { id: 'column-reverse', label: 'bottom' },
-                                { id: 'row', label: 'left' },
-                            ]
-                        }, 
-                        {
-                            label: 'height',
-                            name: 'divider-height',
-                            type: 'slider',
-                            min: 0,
-                            max: 500,
-                            units: ['px']
-                        },
-                    ],
-                });
-            }
-        });
-        editor.on('component:unselected', (component) => {
-            editor.StyleManager.removeSector('fancy_divider');
         });
 
         const undoManager = editor.UndoManager
