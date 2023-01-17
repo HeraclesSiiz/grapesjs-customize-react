@@ -882,7 +882,7 @@ export default function Buidler(props) {
                         edit_contain.setStyle({'flex-basis':'calc(100% - '+attr.value+'px)'});
                         switch(back_section.getStyle()['flex-direction']){
                             case 'row-reverse':
-                                svg.setStyle({...svg.getStyle(),'transform-origin':attr.value+'px '+attr.value+'px ',height:attr.value+'px'});
+                                svg.setStyle({...svg.getStyle(),'transform-origin':attr.value/2+'px '+attr.value/2+'px ',height:attr.value+'px'});
                             case 'row':
                             case 'column-reverse':
                             case 'column':
@@ -897,9 +897,14 @@ export default function Buidler(props) {
         
         editor.StyleManager.removeSector('flex');
         editor.on('component:selected', (component) => {
-            const selected = editor.getSelected();
+            if(component.attributes.name == 'Background Content' || component.attributes.name == 'Fancy Divider'){
+                editor.select(component.parent());
+            }
+            if(component.attributes.name == 'SVG'){
+                editor.select(component.parent().parent());
+            }
             const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
-            if (selected.attributes.name === "Row" || selected.attributes.name === "Cell") {
+            if (component.attributes.name === "Row" || component.attributes.name === "Cell") {
                 if (!openBlocksBtn || !openBlocksBtn.get('active')) {
                     openBlocksBtn && openBlocksBtn.set('active', 1);
                 }
