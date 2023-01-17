@@ -488,9 +488,6 @@ export default function Buidler(props) {
                 transform-origin: 125px 125px; */
             
             }
-            .svg-container svg-shape-bottom{
-                transform: rotate(180deg);
-            }
             .edit-container{
                 flex-basis: calc(100% - 250px);
             }

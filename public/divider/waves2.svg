@@ -2,6 +2,8 @@
     <style type="text/css">
     .p179464c3cc7 {
         opacity: 0.2;
+    }.svg-shape-bottom{
+        transform: rotate(180deg);
     }
     </style>
     <path class="p179464c3cc7" d="M1000,90.6c-60.3-52.9-150.8-69.7-226-41.2c-23.2,8.8-44.8,21.4-68.6,28.4c-35.2,10.4-72.9,7.8-109.3,2.7
