@@ -439,10 +439,10 @@ export default function Buidler(props) {
         blockManager.add('background_section',{
             label:'Background Section',
             content:`<div  class='background_section' data-gjs-type='Background-Section' data-gjs-name="Background Section">
-                <div class="svg-container" data-gjs-name='Fancy Divider'>
+                <div class="svg_container" data-gjs-name='Fancy Divider'>
                     <img data-gjs-name='Fancy Image' src='divider/blank.svg'>
                 </div>
-                <div class="edit-container" data-gjs-droppable='.gjs-row' data-gjs-name='Background Content'>
+                <div class="edit_container" data-gjs-droppable='.gjs-row' data-gjs-name='Background Content'>
                 </div>
             </div>
             <style>
@@ -458,7 +458,7 @@ export default function Buidler(props) {
                 /* flex-direction: column-reverse; */
                 /* flex-direction: row-reverse; */
             }
-            .svg-container{
+            .svg_container{
                 /* flex-basis: 250px; */
                 position: relative;
                 display: grid;
@@ -469,7 +469,7 @@ export default function Buidler(props) {
                 /* for right and left */
                 /* width: 250px; */
             }
-            .svg-container img{
+            .svg_container img{
                 height:250px;
             
                 width:100%;
@@ -488,7 +488,7 @@ export default function Buidler(props) {
                 transform-origin: 125px 125px; */
             
             }
-            .edit-container{
+            .edit_container{
                 flex-basis: calc(100% - 250px);
             }
             </style>`
@@ -733,27 +733,31 @@ export default function Buidler(props) {
                 if(!svg_height){
                     svg_height = 150;
                 }
-
+        
+                console.log(back_section.getStyle());
+                console.log(svg_contain.getStyle());
+                console.log(svg.getStyle());
+                
                 switch(attr.name){
-                    case 'flex-direction':                  
+                    case 'flex-direction':          
                         switch(attr.value){
                             case 'column':
-                                back_section.setStyle({width:'100%','flex-direction':'column'});
+                                back_section.setStyle({...back_section.getStyle(),width:'100%','flex-direction':'column'});
                                 svg_contain.setStyle({width:'100%'});
                                 svg.setStyle({height:svg_height+'px','width':'100%',transform:'rotate(0deg)'});
                                 break;
                             case 'row-reverse':
-                                back_section.setStyle({width:'100%','flex-direction':'row-reverse'});
+                                back_section.setStyle({...back_section.getStyle(),width:'100%','flex-direction':'row-reverse'});
                                 svg_contain.setStyle({width:svg_height+'px'});
                                 svg.setStyle({height:svg_height+'px',width:back_section_style.height,transform:'rotate(90deg)','transform-origin':svg_height/2+'px '+svg_height/2+'px'});
                                 break;
                             case 'column-reverse':
-                                back_section.setStyle({width:'100%','flex-direction':'column-reverse'});
+                                back_section.setStyle({...back_section.getStyle(),width:'100%','flex-direction':'column-reverse'});
                                 svg_contain.setStyle({width:'100%'});
                                 svg.setStyle({height:svg_height+'px',width:'100%',transform:'rotate(180deg)',marginBottom:'-5px'});
                                 break;
                             case 'row':
-                                back_section.setStyle({width:'100%','flex-direction':'row'});
+                                back_section.setStyle({...back_section.getStyle(),width:'100%','flex-direction':'row'});
                                 svg_contain.setStyle({width:svg_height+'px'});
                                 svg.setStyle({height:svg_height+'px',width:back_section_style.height,transform:'rotate(270deg)','transform-origin':section_height/2+'px '+section_height/2+'px'});
                                 break;
@@ -871,17 +875,13 @@ export default function Buidler(props) {
         editor.on('component:unselected', (component) => {
             editor.StyleManager.removeSector('fancy_divider');
         });
-
-        editor.on('component:update:attributes', model => {
-            const selected = editor.getSelected();
+        
+        const privateCls = ['.background_section','.svg_container','.edit_container'];
+        editor.on('selector:add', (selector) => {
+            if (privateCls.indexOf(selector.getFullName()) >= 0) {
+              selector.set({private: 1});
+            }
         });
-
-        editor.on('component:styleUpdate',model =>{
-        })
-
-        editor.on('component:update',model =>{
-            const selected = editor.getSelected();
-        })
 
         const undoManager = editor.UndoManager
         undoManager.start();
