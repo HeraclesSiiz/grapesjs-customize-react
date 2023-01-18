@@ -440,7 +440,7 @@ export default function Buidler(props) {
             label:'Background Section',
             content:`<div  class='background_section' data-gjs-type='Background-Section' data-gjs-name="Background Section">
                 <div class="svg-container" data-gjs-name='Fancy Divider'>
-                    <img data-gjs-name='Fancy Image' src='divider/clouds.svg'>
+                    <img data-gjs-name='Fancy Image'>
                 </div>
                 <div class="edit-container" data-gjs-droppable='.gjs-row' data-gjs-name='Background Content'>
                 </div>
@@ -470,7 +470,7 @@ export default function Buidler(props) {
                 /* width: 250px; */
             }
             .svg-container img{
-                height:250px;
+                height:0px;
             
                 width:100%;
                 /* for down */
@@ -681,6 +681,8 @@ export default function Buidler(props) {
             blocks[index] = block;
         });
 
+        editor.on('component:styleUpdate')
+
         // editor.Components.addType('Background-Section', {
         //     model: {
         //       defaults: {
@@ -717,7 +719,7 @@ export default function Buidler(props) {
         editor.on('style:property:update', styleEl => {
             const properties = ['divider-type','flex-direction','divider-height'];
             const attr = styleEl.property.attributes;
-            
+            // console.log(attr.name, attr.value);
             if(properties.includes(attr.name)){
                 const back_section = editor.getSelected();
                 const svg_contain = back_section.attributes.components.at(0);
@@ -731,7 +733,7 @@ export default function Buidler(props) {
                     svg_height = parseInt(svg.getStyle().height.replace('px',''));
                 }
                 if(!svg_height){
-                    svg_height = 250;
+                    svg_height = 0;
                 }
 
                 switch(attr.name){
@@ -763,8 +765,10 @@ export default function Buidler(props) {
                         edit_contain.setStyle({'flex-basis':'calc(100% - '+attr.value+'px)'});
                         switch(back_section.getStyle()['flex-direction']){
                             case 'row-reverse':
+                                svg_contain.setStyle({width:attr.value+'px'});
                                 svg.setStyle({...svg.getStyle(),'transform-origin':attr.value/2+'px '+attr.value/2+'px ',height:attr.value+'px'});
                             case 'row':
+                                svg_contain.setStyle({width:attr.value+'px'});
                             case 'column-reverse':
                             case 'column':
                                 svg.setStyle({...svg.getStyle(),height:attr.value+'px'});
@@ -773,6 +777,7 @@ export default function Buidler(props) {
                         }
                         break;
                     case 'divider-type':
+                        svg.attributes.attributes.src = 'divider/'+attr.value+'.svg';
                         svg.view.$el[0].setAttribute('src','divider/'+attr.value+'.svg');
                         break;
                 }
@@ -781,11 +786,14 @@ export default function Buidler(props) {
         
         editor.StyleManager.removeSector('flex');
         editor.on('component:selected', (component) => {
+            console.log(component.attributes.type);
             if(component.attributes.name == 'Background Content' || component.attributes.name == 'Fancy Divider'){
                 editor.select(component.parent());
+                return;
             }
             if(component.attributes.name == 'Fancy Image'){
                 editor.select(component.parent().parent());
+                return;
             }
             const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
             if (component.attributes.name === "Row" || component.attributes.name === "Cell") {
@@ -812,7 +820,18 @@ export default function Buidler(props) {
                                 { id: 'mini-waves2', label: 'mini-waves2' },
                                 { id: 'waves1', label: 'waves1' },
                                 { id: 'waves2', label: 'waves2' },
-                            ]
+                            ],
+                            // onChange({ property, to }) {
+                            //     const back_section = editor.getSelected();
+                            //     const svg_contain = back_section.attributes.components.at(0);
+                            //     const edit_contain = back_section.attributes.components.at(1);
+                            //     const svg = svg_contain.attributes.components.at(0);
+
+                            //     console.log(property,to);
+                            //     if (to.value) {
+                            //         svg.view.$el[0].setAttribute('src','divider/'+to.value+'.svg');
+                            //     }
+                            // }
                         }, 
                         {
                             label: 'direction',
@@ -836,7 +855,8 @@ export default function Buidler(props) {
                     ],
                 });
             }else{
-                // editor.StyleManager.removeSector('fancy_divider');
+                console.log('not divider');
+                editor.StyleManager.removeSector('fancy_divider');
             }
         });
         editor.on('component:unselected', (component) => {
