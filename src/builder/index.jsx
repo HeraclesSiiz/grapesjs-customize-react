@@ -15,7 +15,7 @@ import './grapes.css';
 import './index.scss';
 import 'semantic-ui-css/semantic.min.css';
 
-const svgNameList = ['column', '2columns', '3columns', '2col37', 'text', 'link', 'image', 'video', 'map', 'linkblock', 'quote', 'textsection', 'form', 'form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio', 'navbar', 'countdown', 'image'
+const svgNameList = ['image','column', '2columns', '3columns', '2col37', 'text', 'link', 'image', 'video', 'map', 'linkblock', 'quote', 'textsection', 'form', 'form', 'input', 'textarea', 'select', 'button', 'label', 'checkbox', 'radio', 'navbar', 'countdown'
 ];
 
 const panelList = [];
@@ -438,6 +438,7 @@ export default function Buidler(props) {
 
         blockManager.add('background_section',{
             label:'Background Section',
+            category:'Basic',
             content:`<div  class='background_section' data-gjs-type='Background-Section' data-gjs-name="Background Section">
                 <div class="svg_container" data-gjs-name='Fancy Divider'>
                     <img data-gjs-name='Fancy Image' src='divider/blank.svg'>
@@ -492,10 +493,11 @@ export default function Buidler(props) {
                 flex-basis: calc(100% - 250px);
             }
             </style>`
-        });
+        },{at:0});
 
         let blocks = blockManager.getAll();
         blocks.map((block, index) => {
+            console.log(block.attributes.category);
             block.attributes.media = '<img src = "buildericons/' + svgNameList[index] + '.svg">';
             switch (block.attributes.label) {
                 case '1 Column':
@@ -681,6 +683,13 @@ export default function Buidler(props) {
             blocks[index] = block;
         });
 
+        const privateCls = ['.background_section','.svg_container','.edit_container'];
+        editor.on('selector:add', (selector) => {
+            if (privateCls.indexOf(selector.getFullName()) >= 0) {
+              selector.set({private: 1});
+            }
+        });
+
         // editor.Components.addType('Background-Section', {
         //     model: {
         //       defaults: {
@@ -737,7 +746,7 @@ export default function Buidler(props) {
                 console.log(back_section.getStyle());
                 console.log(svg_contain.getStyle());
                 console.log(svg.getStyle());
-                
+
                 switch(attr.name){
                     case 'flex-direction':          
                         switch(attr.value){
@@ -824,6 +833,7 @@ export default function Buidler(props) {
                             name: 'divider-type',
                             type: 'select',
                             options: [
+                                { id: 'blank', label: 'none' },
                                 { id: 'clouds', label: 'clouds' },
                                 { id: 'grange-brush1', label: 'grange-brush1' },
                                 { id: 'grange-brush2', label: 'grange-brush2' },
@@ -868,19 +878,11 @@ export default function Buidler(props) {
                     ],
                 });
             }else{
-                console.log('not divider');
                 editor.StyleManager.removeSector('fancy_divider');
             }
         });
         editor.on('component:unselected', (component) => {
             editor.StyleManager.removeSector('fancy_divider');
-        });
-        
-        const privateCls = ['.background_section','.svg_container','.edit_container'];
-        editor.on('selector:add', (selector) => {
-            if (privateCls.indexOf(selector.getFullName()) >= 0) {
-              selector.set({private: 1});
-            }
         });
 
         const undoManager = editor.UndoManager
