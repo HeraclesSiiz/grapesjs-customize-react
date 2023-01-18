@@ -440,7 +440,7 @@ export default function Buidler(props) {
             label:'Background Section',
             content:`<div  class='background_section' data-gjs-type='Background-Section' data-gjs-name="Background Section">
                 <div class="svg-container" data-gjs-name='Fancy Divider'>
-                    <img data-gjs-name='Fancy Image'>
+                    <img data-gjs-name='Fancy Image' src='divider/blank.svg'>
                 </div>
                 <div class="edit-container" data-gjs-droppable='.gjs-row' data-gjs-name='Background Content'>
                 </div>
@@ -470,7 +470,7 @@ export default function Buidler(props) {
                 /* width: 250px; */
             }
             .svg-container img{
-                height:0px;
+                height:250px;
             
                 width:100%;
                 /* for down */
@@ -681,8 +681,6 @@ export default function Buidler(props) {
             blocks[index] = block;
         });
 
-        editor.on('component:styleUpdate')
-
         // editor.Components.addType('Background-Section', {
         //     model: {
         //       defaults: {
@@ -733,7 +731,7 @@ export default function Buidler(props) {
                     svg_height = parseInt(svg.getStyle().height.replace('px',''));
                 }
                 if(!svg_height){
-                    svg_height = 0;
+                    svg_height = 150;
                 }
 
                 switch(attr.name){
@@ -759,6 +757,11 @@ export default function Buidler(props) {
                                 svg_contain.setStyle({width:svg_height+'px'});
                                 svg.setStyle({height:svg_height+'px',width:back_section_style.height,transform:'rotate(270deg)','transform-origin':section_height/2+'px '+section_height/2+'px'});
                                 break;
+                            default:
+                                back_section.setStyle({width:'100%','flex-direction':'column'});
+                                svg_contain.setStyle({width:'100%'});
+                                svg.setStyle({height:svg_height+'px','width':'100%',transform:'rotate(0deg)'});
+                                break;
                         }
                         break;
                     case 'divider-height':
@@ -777,8 +780,14 @@ export default function Buidler(props) {
                         }
                         break;
                     case 'divider-type':
-                        svg.attributes.attributes.src = 'divider/'+attr.value+'.svg';
-                        svg.view.$el[0].setAttribute('src','divider/'+attr.value+'.svg');
+                        console.log(attr.value);
+                        if(attr.value == ''){
+                            svg.attributes.attributes.src = 'divider/blank.svg';
+                            svg.view.$el[0].setAttribute('src','divider/blank.svg');
+                        }else{
+                            svg.attributes.attributes.src = 'divider/'+attr.value+'.svg';
+                            svg.view.$el[0].setAttribute('src','divider/'+attr.value+'.svg');
+                        }
                         break;
                 }
             }
@@ -786,7 +795,6 @@ export default function Buidler(props) {
         
         editor.StyleManager.removeSector('flex');
         editor.on('component:selected', (component) => {
-            console.log(component.attributes.type);
             if(component.attributes.name == 'Background Content' || component.attributes.name == 'Fancy Divider'){
                 editor.select(component.parent());
                 return;
@@ -821,7 +829,8 @@ export default function Buidler(props) {
                                 { id: 'waves1', label: 'waves1' },
                                 { id: 'waves2', label: 'waves2' },
                             ],
-                            // onChange({ property, to }) {
+                            onChange({ property, to }) {
+                                console.log(property,to);
                             //     const back_section = editor.getSelected();
                             //     const svg_contain = back_section.attributes.components.at(0);
                             //     const edit_contain = back_section.attributes.components.at(1);
@@ -831,7 +840,7 @@ export default function Buidler(props) {
                             //     if (to.value) {
                             //         svg.view.$el[0].setAttribute('src','divider/'+to.value+'.svg');
                             //     }
-                            // }
+                            }
                         }, 
                         {
                             label: 'direction',
