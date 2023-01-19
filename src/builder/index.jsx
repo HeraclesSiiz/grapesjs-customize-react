@@ -439,8 +439,8 @@ export default function Buidler(props) {
         blockManager.add('background_section',{
             label:'Background Section',
             category:'Basic',
-            content:`<div  class='background_section' data-gjs-type='Background-Section' data-gjs-name="Background Section">
-                <div class="svg_container" data-gjs-name='Fancy Divider'>
+            content:`<div  class='background_section' data-gjs-droppable='' data-gjs-type='Background-Section' data-gjs-name="Background Section">
+                <div class="svg_container" data-gjs-droppable='' data-gjs-name='Fancy Divider'>
                     <img data-gjs-name='Fancy Image' src='divider/blank.svg'>
                 </div>
                 <div class="edit_container" data-gjs-droppable='.gjs-row' data-gjs-name='Background Content'>
@@ -471,7 +471,7 @@ export default function Buidler(props) {
                 /* width: 250px; */
             }
             .svg_container img{
-                height:250px;
+                height:0px;
             
                 width:100%;
                 /* for down */
@@ -740,12 +740,10 @@ export default function Buidler(props) {
                     svg_height = parseInt(svg.getStyle().height.replace('px',''));
                 }
                 if(!svg_height){
-                    svg_height = 150;
+                    svg_height = 0;
                 }
         
-                console.log(back_section.getStyle());
-                console.log(svg_contain.getStyle());
-                console.log(svg.getStyle());
+                console.log('styleupdate');
 
                 switch(attr.name){
                     case 'flex-direction':          
@@ -771,13 +769,16 @@ export default function Buidler(props) {
                                 svg.setStyle({height:svg_height+'px',width:back_section_style.height,transform:'rotate(270deg)','transform-origin':section_height/2+'px '+section_height/2+'px'});
                                 break;
                             default:
-                                back_section.setStyle({width:'100%','flex-direction':'column'});
+                                back_section.setStyle({...back_section.getStyle(),width:'100%','flex-direction':'column'});
                                 svg_contain.setStyle({width:'100%'});
                                 svg.setStyle({height:svg_height+'px','width':'100%',transform:'rotate(0deg)'});
                                 break;
                         }
                         break;
                     case 'divider-height':
+                        if(attr.value == ''){
+                            attr.value = 0;
+                        }
                         edit_contain.setStyle({'flex-basis':'calc(100% - '+attr.value+'px)'});
                         switch(back_section.getStyle()['flex-direction']){
                             case 'row-reverse':
