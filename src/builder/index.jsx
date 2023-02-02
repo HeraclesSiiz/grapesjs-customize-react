@@ -386,13 +386,13 @@ export default function Buidler(props) {
             label: 'Lead Generation',
             category: 'forms',
             content:
-                `<form method='get' action='/'>
-                    <input type='text' placeholder='Name' name='form_name' class='form_name'>
-                    <input type='email' placeholder='Email' name='form_email' class='form_email'>
+                `<form method='get' action='/' data-gjs-type='form'>
+                    <input type='text' placeholder='Name' name='form_name' class='input form_name'>
+                    <input type='email' placeholder='Email' name='form_email' class='input form_email'>
                     <input type='submit' value='Sign Up' name='form_sign' class='form_sign'>
                 </form>
                 <style>
-                    input {
+                    .input {
                         width:100%;
                         height:35px;
                         margin-bottom:0.3em;
@@ -402,6 +402,7 @@ export default function Buidler(props) {
                     }
                     .form_sign{
                         background-color:Aqua;
+                        text-align:center;
                     }
                 </style>
                 `
@@ -411,29 +412,29 @@ export default function Buidler(props) {
             label: 'Contact Form',
             category: 'forms',
             content:
-                `<form method='get' action='/'>
-                <input type='text' placeholder='Name' name='form_name' class='form_name'>
-                <input type='email' placeholder='Email' name='form_email' class='form_email'>
-                <input type='textarea' placeholder='Message' name='form_message' class='form_message'>
-                <input type='submit' value='Send Message' name='form_send' class='form_send'>
-            </form>
-            <style>
-                input {
-                    width:100%;
-                    height:35px;
-                    margin-bottom:0.3em;
-                }
-                input[type='textarea'] {
-                    height:120px;
-                }
-                .form_name,.form_email{
-                    backgrond-color:#ccc;
-                }
-                .form_send{
-                    background-color:Aqua;
-                }
-            </style>
-            `,
+                `<form method='get' action='/' data-gjs-type='form'>
+                    <input type='text' placeholder='Name' name='form_name' class='form_name'>
+                    <input type='email' placeholder='Email' name='form_email' class='form_email'>
+                    <input type='textarea' placeholder='Message' name='form_message' class='form_message'>
+                    <input type='submit' value='Send Message' name='form_send' class='form_send'>
+                </form>
+                <style>
+                    input {
+                        width:100%;
+                        height:35px;
+                        margin-bottom:0.3em;
+                    }
+                    input[type='textarea'] {
+                        height:120px;
+                    }
+                    .form_name,.form_email{
+                        backgrond-color:#ccc;
+                    }
+                    .form_send{
+                        background-color:Aqua;
+                    }
+                </style>
+                `,
         }, { at: 13 });
 
         blockManager.add('background_section',{
@@ -497,7 +498,6 @@ export default function Buidler(props) {
 
         let blocks = blockManager.getAll();
         blocks.map((block, index) => {
-            console.log(block.attributes.category);
             block.attributes.media = '<img src = "buildericons/' + svgNameList[index] + '.svg">';
             switch (block.attributes.label) {
                 case '1 Column':
@@ -683,12 +683,94 @@ export default function Buidler(props) {
             blocks[index] = block;
         });
 
-        const privateCls = ['.background_section','.svg_container','.edit_container'];
+        const privateCls = ['.background_section','.svg_container','.edit_container','.input','.form_name','.form_email','.form_sign'];
         editor.on('selector:add', (selector) => {
             if (privateCls.indexOf(selector.getFullName()) >= 0) {
               selector.set({private: 1});
             }
         });
+
+        // editor.DomComponents.addType('form', {
+        //     isComponent: el => el.tagName == 'form',
+        //     model: {
+        //         init() {
+        //         },
+        //         defaults: {
+        //             tagName:'form',
+        //             traits(component){
+        //                 return([
+        //                     'id',{
+        //                         type:'form-children',
+        //                         options:component,
+        //                     },{
+        //                         type:'select',
+        //                         name:'method',
+        //                         label:'method',
+        //                         options:[
+        //                             {id:'get',label:'GET'},
+        //                             {id:'post',label:'POST'}
+        //                         ]
+        //                     },
+        //                     {
+        //                         type:'text',
+        //                         name:'action',
+        //                         label:'On submit to go'
+        //                     }
+        //                 ]);
+        //             }
+        //         },
+        //     },
+        //     view: {
+        //         init() {
+        //             this.listenTo(this.model, 'select', this.changeGlobal);
+        //         },
+        //         changeGlobal() {
+        //             console.log('global');
+        //         },
+        //         onRender() {
+        //         }
+        //     }
+        // });
+
+        // editor.TraitManager.addType('form-children', {
+        //     // Expects as return a simple HTML string or an HTML element
+        //     createInput({ trait }) {
+        //       // Here we can decide to use properties from the trait
+        //       const traitOpts = trait.get('options') || [];
+        //       console.log(traitOpts);
+        //       console.log(traitOpts.attributes.components);
+        //       const options = traitOpts.length ? traitOpts : [
+        //         { id: 'url', name: 'URL' },
+        //         { id: 'email', name: 'Email' },
+        //       ];
+          
+        //       const childs = traitOpts.attributes.components;
+        //       childs.map(child=>{console.log(child)});
+        //       // Create a new element container and add some content
+        //       const el = document.createElement('div');
+        //       el.innerHTML = `
+        //           ${childs.map(child => `<div><label>${child.attributes.attributes.name}</label><button>hide</button><button>edit</button><button>delete</button></div>`).join('')}
+        //       `;
+        //       // Let's make our content interactive
+        //     //   const inputsUrl = el.querySelector('.href-next__url-inputs');
+        //     //   const inputsEmail = el.querySelector('.href-next__email-inputs');
+        //     //   const inputType = el.querySelector('.href-next__type');
+        //     //   inputType.addEventListener('change', ev => {
+        //     //     switch (ev.target.value) {
+        //     //       case 'url':
+        //     //         inputsUrl.style.display = '';
+        //     //         inputsEmail.style.display = 'none';
+        //     //         break;
+        //     //       case 'email':
+        //     //         inputsUrl.style.display = 'none';
+        //     //         inputsEmail.style.display = '';
+        //     //         break;
+        //     //     }
+        //     //   });
+          
+        //       return el;
+        //     },
+        // });
 
         // editor.Components.addType('Background-Section', {
         //     model: {
@@ -699,14 +781,13 @@ export default function Buidler(props) {
         //     }
         //   });
 
-        // editor.on('component:styleUpdate:height', (model) => { console.log(model); });
+        // editor.on('component:styleUpdate:height', (model) => {});
 
         // editor.DomComponents.addType('Background-Section', {
         //     extend: 'Background-Section',
         //     extendFn: ['init'],
         //     model: {
         //       init() {
-        //           console.log(this);
         //           this.listenTo(this, 'change:components',this.handleStyleChange);
         //           this.listenTo(this, 'change:attributes', this.handleAttrChange);
 
@@ -726,7 +807,6 @@ export default function Buidler(props) {
         editor.on('style:property:update', styleEl => {
             const properties = ['divider-type','flex-direction','divider-height'];
             const attr = styleEl.property.attributes;
-            // console.log(attr.name, attr.value);
             if(properties.includes(attr.name)){
                 const back_section = editor.getSelected();
                 const svg_contain = back_section.attributes.components.at(0);
@@ -742,8 +822,6 @@ export default function Buidler(props) {
                 if(!svg_height){
                     svg_height = 0;
                 }
-        
-                console.log('styleupdate');
 
                 switch(attr.name){
                     case 'flex-direction':          
@@ -794,7 +872,6 @@ export default function Buidler(props) {
                         }
                         break;
                     case 'divider-type':
-                        console.log(attr.value);
                         if(attr.value == ''){
                             svg.attributes.attributes.src = 'divider/blank.svg';
                             svg.view.$el[0].setAttribute('src','divider/blank.svg');
@@ -845,16 +922,6 @@ export default function Buidler(props) {
                                 { id: 'waves2', label: 'waves2' },
                             ],
                             onChange({ property, to }) {
-                                console.log(property,to);
-                            //     const back_section = editor.getSelected();
-                            //     const svg_contain = back_section.attributes.components.at(0);
-                            //     const edit_contain = back_section.attributes.components.at(1);
-                            //     const svg = svg_contain.attributes.components.at(0);
-
-                            //     console.log(property,to);
-                            //     if (to.value) {
-                            //         svg.view.$el[0].setAttribute('src','divider/'+to.value+'.svg');
-                            //     }
                             }
                         }, 
                         {
