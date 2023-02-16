@@ -451,7 +451,8 @@ export default function Buidler(props) {
             .background_section {
                 position: relative;
                 width: 100%;
-                height:600px;
+                min-height:300px;
+                height:auto;
                 fill:white;
                 display: flex;
                 
@@ -492,6 +493,8 @@ export default function Buidler(props) {
             }
             .edit_container{
                 flex-basis: calc(100% - 250px);
+                min-height:300px;
+                height:auto;
             }
             </style>`
         },{at:0});
