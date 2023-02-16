@@ -440,7 +440,8 @@ export default function Buidler(props) {
         blockManager.add('background_section',{
             label:'Background Section',
             category:'Basic',
-            content:`<div  class='background_section' data-gjs-droppable='' data-gjs-type='Background-Section' data-gjs-name="Background Section">
+            content:`
+            <div class='background_section' data-gjs-droppable='' data-gjs-type='Background-Section' data-gjs-name="Background Section" data-gjs-resizable='{"tl":0,"tc":0,"tr":0,"cl":0,"cr":0,"bl":0,"br":0,"minDim":1}'>
                 <div class="svg_container" data-gjs-droppable='' data-gjs-name='Fancy Divider'>
                     <img data-gjs-name='Fancy Image' src='divider/blank.svg'>
                 </div>
@@ -455,6 +456,7 @@ export default function Buidler(props) {
                 height:auto;
                 fill:white;
                 display: flex;
+                margin:10px;
                 
                 flex-direction: column;
                 /* flex-direction: row; */
